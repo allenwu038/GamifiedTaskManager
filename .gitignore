@@ -4,3 +4,17 @@
 # React Native Node Modules
 ./TaskApp/node_modules
 ./TaskApp/package_lock.json
+
+./TaskApp/node_modules/**/*
+./TaskApp/expo/*
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
