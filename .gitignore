@@ -1,0 +1,6 @@
+# Kip's Design Iteration Templates
+./IdeateTemplates
+
+# React Native Node Modules
+./TaskApp/node_modules
+./TaskApp/package_lock.json
