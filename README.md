@@ -26,7 +26,7 @@ To work on this project, you'll want to have a local working copy of the reposit
 
 4. Next, we want to open the app folder in terminal. Open an integrated terminal by using the menu bar and navigating to _Terminal > New Terminal_. You should currently be in the _GamifiedTaskManager_ folder. Change to the TaskApp directory using `cd TaskApp`.
 
-5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. While in the _TaskApp_ directory, run the command in terminal `npm install`.
+5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. If you have not yet downloaded Expo-CLI, then run the command `npm i -g expo-cli`. While in the _TaskApp_ directory, run the command in terminal `npm install`.
 
 6. Now there should be a folder named _node_modules_ and a file called _package-lock.json_ inside the _TaskApp_ directory. In the file explorer, make sure that both of these are greyed out. If so, then Git will ignore them. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
 
