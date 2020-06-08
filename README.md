@@ -22,14 +22,11 @@ To work on this project, you'll want to have a local working copy of the reposit
       + Go to VS Code's _Source Control_ tab (under the file explorer). Click on the meatballs menu and select "Checkout to...". Alternatively, at the bottom left corner of the VS Code window, there should be a "master" button that you can click on.
       + Select _origin/develop_. This will create a local copy of the develop branch.
     + Using command line interface:
-      + Alternatively, using the menu bar open an integrated terminal using _Terminal > New Terminal_. Then you want to input 'git checkout origin/develop'.
+      + Alternatively, using the menu bar open an integrated terminal using _Terminal > New Terminal_. Then you want to input `checkout origin/develop`.
 
-4. Next, we want to open the app folder in terminal. Open an integrated terminal by using the menu bar and navigating to _Terminal > New Terminal_. You should currently be in the _GamifiedTaskManager_ folder. Change to the TaskApp directory using ```shell cd TaskApp```.
+4. Next, we want to open the app folder in terminal. Open an integrated terminal by using the menu bar and navigating to _Terminal > New Terminal_. You should currently be in the _GamifiedTaskManager_ folder. Change to the TaskApp directory using `cd TaskApp`.
 
-5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. While in the _TaskApp_ directory, run the command in terminal
-  ```shell
-  npm install
-  ```
+5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. While in the _TaskApp_ directory, run the command in terminal `npm install`.
 
 6. Now there should be a folder named _node_modules_ and a file called _package-lock.json_ inside the _TaskApp_ directory. In the file explorer, make sure that both of these are greyed out. If so, then Git will ignore them. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
 
