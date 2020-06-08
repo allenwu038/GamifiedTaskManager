@@ -4,6 +4,7 @@ TaskApp/node_modules/**/*
 TaskApp/expo/*
 TaskApp/.expo
 TaskApp/.expo/*
+TaskApp/.expo/packager-info.json
 npm-debug.*
 *.jks
 *.p8
