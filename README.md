@@ -30,9 +30,15 @@ To work on this project, you'll want to have a local working copy of the reposit
 
 6. Now there should be a folder named _node_modules_ and a file called _package-lock.json_ inside the _TaskApp_ directory. In the file explorer, make sure that both of these are greyed out. If so, then Git will ignore them. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
 
-7. Now to double check that everything works as expected. Note: This requires the Expo app to be downloaded 
+7. Now to double check that everything works as expected. In terminal (still in the _TaskApp_ directory), run the command `npm start` OR `expo start`. This should open Metro Bundler in a browser window at localhost:19002. There should be several options to run your code on the left side of the screen.
+    + If you select "Run in web browser," a small popup in the bottom right corner will appear to let you know that Bundler is attempting to open in a web page.
+      + Note that Bundler will automatically open the app in a new tab.
+      + Do not be surprised if this process takes a while. This is because Expo will be using the develop version of the code, so nothing is optimised yet. The production code will be faster. 
+    + You can also run the app on your own phone. This will require you to download Expo Client from the Apple App Store or from the Google Play Store. Using your camera, scan the QR code in the bottom left corner. There should be a popup that redirects you to the Expo app, and you'll see the JS build progress bar at the bottom of your screen. Once it finishes loading, you can interact with the app in a physical device.
+
+Once you reach this point, congrats! You have everything set up to start development.
 
 ### Working on the Project
 Until the team otherwise discusses, all changes to the project files should happen in the develop branch. This is because only working prototypes should live on the master branch. 
 
-Once you have a local develop branch, you want to push to _"origin/develop"_. 
+Once you have a local develop branch, you always want to push to _"origin/develop"_. As long as Git displays your branch as "develop" instead of "master", it should do this automatically.
