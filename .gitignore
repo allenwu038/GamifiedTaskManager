@@ -1,6 +1,5 @@
 # React Native Node Modules
 TaskApp/node_modules
-TaskApp/package_lock.json
 
 TaskApp/node_modules/**/*
 TaskApp/expo/*
@@ -18,3 +17,4 @@ web-build/
 
 # Kip's Design Iteration Templates
 ./IdeateTemplates
+TaskApp/package-lock.json
