@@ -42,3 +42,5 @@ Once you reach this point, congrats! You have everything set up to start develop
 Until the team otherwise discusses, all changes to the project files should happen in the develop branch. This is because only working prototypes should live on the master branch. 
 
 Once you have a local develop branch, you always want to push to _"origin/develop"_. As long as Git displays your branch as "develop" instead of "master", it should do this automatically.
+
+Most changes to the source code should happen in the _screens_ and _navigation_ subfolders. However, the insertion point for the app is _App.js_. In order to view changes to the app, you'll want to comment out the existing code inside `return` only and place your component in its place.
