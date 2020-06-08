@@ -1,8 +1,9 @@
 # React Native Node Modules
 TaskApp/node_modules
-
 TaskApp/node_modules/**/*
 TaskApp/expo/*
+TaskApp/.expo
+TaskApp/.expo/*
 npm-debug.*
 *.jks
 *.p8
