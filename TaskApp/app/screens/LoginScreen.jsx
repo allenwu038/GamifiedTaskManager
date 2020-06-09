@@ -31,20 +31,6 @@ export default function LoginScreen({ navigation }) {
     )
   };
 
-// function MyStack() {
-//     return (
-//         <Stack.Navigator>
-//           <Stack.Screen
-//             name="LoginScreen"
-//             component={LoginScreen}
-//             options={{ title: 'Welcome' }}
-//           />
-//           <Stack.Screen name="MakeProfile" component={MakeProfile} />
-//         </Stack.Navigator>
-//     );
-// }
-
-
 const styles = StyleSheet.create ({
   backgroundContainer: {
     flex: 1,
