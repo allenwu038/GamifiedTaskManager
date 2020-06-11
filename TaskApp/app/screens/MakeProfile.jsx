@@ -24,7 +24,7 @@ export default class MakeProfile extends Component {
   }
 
   state = {
-    value: '',
+    value: ' ',
   }
 
   handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
@@ -49,12 +49,12 @@ export default class MakeProfile extends Component {
                 images={this.state.images}
                 //onCurrentImagePressed={index => console.warn(`character ${index} selected. Proceed?`)}
                 dotColor="#FFEE58"
-                sliderBoxHeight = {1000}
+                sliderBoxHeight = {300}
                 inactiveDotColor="#90A4EA"
                 circleLoop
                 resizeMethod={'resize'}
                 resizeMode={'cover'}
-                dotStyle = { {width: 10, height: 10, marginBottom: 450} }
+                dotStyle = { {width: 15, height: 15, marginBottom: 450} }
                 ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 50} }
             />
           </ImageBackground>
