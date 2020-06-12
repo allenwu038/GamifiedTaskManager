@@ -39,7 +39,7 @@ To work on this project, you'll want to have a local working copy of the reposit
 Once you reach this point, congrats! You have everything set up to start development.
 
 ### Working on the Project
-Until the team otherwise discusses, all changes to the project files should happen in the develop branch. This is because only working prototypes should live on the master branch. 
+Until the team otherwise discusses, all changes to the project files should happen in the develop branch. This is because only working prototypes should live on the master branch. If you would like to make changes that will result in breaking the develop branch, please instead fork the repo and make your changes to the fork.
 
 Once you have a local develop branch, you always want to push to _"origin/develop"_. As long as Git displays your branch as "develop" instead of "master", it should do this automatically.
 
