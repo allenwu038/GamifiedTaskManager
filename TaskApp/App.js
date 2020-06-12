@@ -1,19 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// REACT RESOURCE IMPORTS
 import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator} from '@react-navigation/stack';
 
+// LOCAL SCREEN IMPORTS
 import useCachedResources from './app/hooks/useCachedResources';
 import BottomTabNavigator from './app/navigation/BottomTabNavigator';
 import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
 
-const Stack = createStackNavigator();
 
-export default function App(props) {
+export default function App() {
+  const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
-
+  
   if (!isLoadingComplete) {
     return null;
   } else {
