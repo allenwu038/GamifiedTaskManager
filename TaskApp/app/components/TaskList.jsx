@@ -1,14 +1,14 @@
 import React, { Component, useState } from "react";
 import { Text, TextInput, View, Button } from "react-native";
 
-import Task from "tasks";
+import Task from "./Task.jsx";
 
 export default class TaskList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tasks: []
+      tasks: [],
     };
   }
 
@@ -28,8 +28,6 @@ export default class TaskList extends Component {
   }
 
   render() {
-    return (
-      <Task/>
-    );
+    return <Task />;
   }
 }
