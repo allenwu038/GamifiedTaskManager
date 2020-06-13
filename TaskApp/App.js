@@ -11,7 +11,7 @@ import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
 import QuestScreen from './app/screens/QuestScreen';
-// import TaskScreen from './app/screens/TaskScreen';
+import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/TaskList';
 
 
@@ -35,7 +35,8 @@ export default function App() {
             <Stack.Screen name="Nav" component={BottomTabNavigator} />
             {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
-            <Stack.Screen name="Quest" component={QuestScreen} />
+            {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
+            <Stack.Screen name="TaskScreen" component={TaskScreen} />
             {/* <Stack.Screen name="pizza" component={PizzaTranslator} /> */}
           </Stack.Navigator>
         </NavigationContainer>

@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button, TextInput, Text, View, ImageBackground } from "react-native";
-import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
+
+import TodoList from './TodoList';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
+import TaskList from "../components/TaskList";
 
 // import Async from "@react-native-community/async-storage";
 
 // const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
-function Tasks() {
+function TaskScreen() {
   // object destructuring 
   // variable is an array with [all the tasks, function that allows us to update todos]
   // const [todos, setTodos] = useState([])
@@ -103,6 +105,7 @@ function Tasks() {
       {/* <Button title={"Add Task"} onPress={handleAddTodo} /> */}
       {/* <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} /> */}
       <View>
+        <TaskList/>
         {/* <Text>
           {todos.filter((todo) => !todo.complete).length} tasks to go!
         </Text> */}
@@ -111,4 +114,4 @@ function Tasks() {
   );
 } 
 
-export default Tasks;
+export default TaskScreen;
