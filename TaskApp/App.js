@@ -10,6 +10,7 @@ import BottomTabNavigator from './app/navigation/BottomTabNavigator';
 import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
+import TaskScreen from './app/screens/TaskScreen';
 
 
 export default function App() {
@@ -24,9 +25,10 @@ export default function App() {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} />
+            <Stack.Screen name="Nav" component={BottomTabNavigator} />
+            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
+            <Stack.Screen name="Tasks" component={TaskScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
