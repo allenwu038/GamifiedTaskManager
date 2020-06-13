@@ -3,7 +3,7 @@ import { Button, TextInput, Text, View, ImageBackground } from "react-native";
 import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
-import { TaskInput } from '../components/TaskInput';
+
 // import Async from "@react-native-community/async-storage";
 
 // const LOCAL_STORAGE_KEY = 'todoApp.todos'

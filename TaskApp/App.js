@@ -11,7 +11,7 @@ import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
 // import TaskScreen from './app/screens/TaskScreen';
-import TaskInput from './app/components/TaskInput';
+import TaskList from './app/components/TaskList';
 
 
 export default function App() {
@@ -23,7 +23,7 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <TaskInput/>
+        <TaskList/>
       </View>
 
 
