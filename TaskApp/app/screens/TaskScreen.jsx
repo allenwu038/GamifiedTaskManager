@@ -11,9 +11,9 @@ import { TaskInput } from '../components/TaskInput';
 function Tasks() {
   // object destructuring 
   // variable is an array with [all the tasks, function that allows us to update todos]
-  const [todos, setTodos] = useState([])
+  // const [todos, setTodos] = useState([])
   // this hook lets us reference elements in our html, allows us access to input
-  const todoNameRef = useRef()
+  // const todoNameRef = useRef()
 
   // const storeData = async (value) => {
   //   try {
@@ -43,42 +43,45 @@ function Tasks() {
   //   }
   // }
 
-  function toggleTodo(id) {
-    const newTodos = [...todos] 
-    const todo = newTodos.find(todo => todo.id === id)
-    todo.complete = !todo.complete
-    setTodos(newTodos)
-  }
+  // function toggleTodo(id) {
+  //   const newTodos = [...todos] 
+  //   const todo = newTodos.find(todo => todo.id === id)
+  //   todo.complete = !todo.complete
+  //   setTodos(newTodos)
+  // }
  
-  function handleAddTodo(e) {
-    const name = todoNameRef.current.value
-    if (name === '') return
-    setTodos(prevTodos => {
-      return [...prevTodos, {id: uuidv4(), name: name, complete: false}]
-    })
-    // clears out input for us after
-    todoNameRef.current.value = null
-  }
+  // function handleAddTodo(e) {
+  //   const name = todoNameRef.current.value
+  //   if (name === '') return
+  //   setTodos(prevTodos => {
+  //     return [...prevTodos, {id: uuidv4(), name: name, complete: false}]
+  //   })
+  //   // clears out input for us after
+  //   todoNameRef.current.value = null
+  // }
 
-  function handleClearTodos() {
-    const newTodos = todos.filter(todo => !todo.complete)
-    setTodos(newTodos)
-  }
+  // function handleClearTodos() {
+  //   const newTodos = todos.filter(todo => !todo.complete)
+  //   setTodos(newTodos)
+  // }
 
-  state = {
-    value: 'get react to work',
-  }
+  // state = {
+  //   value: 'get react to work',
+  // }
 
-  handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
+  // handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
 
   
   return (
     <>
-      <ImageBackground source={backgroundImg} /> 
+      <ImageBackground
+        source={backgroundImg}
+        style={{ width: "100%" }}
+      /> 
       {/* passing prop of todos */}
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      {/* <TodoList todos={todos} toggleTodo={toggleTodo} /> */}
 
-      <TextInput
+      {/* <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
@@ -96,13 +99,13 @@ function Tasks() {
           borderBottomColor: "#555",
           marginTop: 70,
         }}
-      />
-      <Button title={"Add Task"} onPress={handleAddTodo} />
-      <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} />
+      /> */}
+      {/* <Button title={"Add Task"} onPress={handleAddTodo} /> */}
+      {/* <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} /> */}
       <View>
-        <Text>
+        {/* <Text>
           {todos.filter((todo) => !todo.complete).length} tasks to go!
-        </Text>
+        </Text> */}
       </View>
     </>
   );

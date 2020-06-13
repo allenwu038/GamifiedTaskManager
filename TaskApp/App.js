@@ -10,6 +10,7 @@ import BottomTabNavigator from './app/navigation/BottomTabNavigator';
 import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
+import QuestScreen from './app/screens/QuestScreen';
 // import TaskScreen from './app/screens/TaskScreen';
 import TaskInput from './app/components/TaskInput';
 
@@ -22,23 +23,23 @@ export default function App() {
     return null;
   } else {
     return (
-      <View style={styles.container}>
-        <TaskInput/>
-      </View>
-
-
       // <View style={styles.container}>
-      //   {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-      //   <NavigationContainer linking={LinkingConfiguration}>
-      //     <Stack.Navigator>
-      //       <Stack.Screen name="Nav" component={BottomTabNavigator} />
-      //       {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      //       <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
-      //       {/* <Stack.Screen name="Tasks" component={TaskScreen} /> */}
-      //       <Stack.Screen name="pizza" component={PizzaTranslator} />
-      //     </Stack.Navigator>
-      //   </NavigationContainer>
+      //   <TaskInput/>
       // </View>
+
+
+      <View style={styles.container}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+        <NavigationContainer linking={LinkingConfiguration}>
+          <Stack.Navigator>
+            <Stack.Screen name="Nav" component={BottomTabNavigator} />
+            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
+            <Stack.Screen name="Quest" component={QuestScreen} />
+            {/* <Stack.Screen name="pizza" component={PizzaTranslator} /> */}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
     );
   }
 }
