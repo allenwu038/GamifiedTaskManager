@@ -1,8 +1,12 @@
-import React, { useState, useRef, useEffect} from 'react';
-import TodoList from './TodoList'
+import React, { useState, useRef, useEffect } from 'react';
+import { Button, TextInput, Text, View, ImageBackground } from "react-native";
+import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
+import backgroundImg from '../assets/images/homescreenBackground.jpg';
+import { TaskInput } from '../components/TaskInput';
+// import Async from "@react-native-community/async-storage";
 
-const LOCAL_STORAGE_KEY = 'todoApp.todos'
+// const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 function Tasks() {
   // object destructuring 
@@ -11,18 +15,33 @@ function Tasks() {
   // this hook lets us reference elements in our html, allows us access to input
   const todoNameRef = useRef()
 
+  // const storeData = async (value) => {
+  //   try {
+  //     await AsyncStorage.setItem("@storage_Key", value);
+  //   } catch (e) {
+  //     // saving error
+  //   }
+  // };
+
   // called to load our todos, only called once when component loads
   // pass in empty array and since empty array never changes, doesn't get called again
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-    if (storedTodos) setTodos(storedTodos)
-
-  }, [])
+  // const getData = async () => {
+  //   try {
+  //     const storedTodos = await JSON.parse(AsyncStorage.getItem(LOCAL_STORAGE_KEY))
+  //      if (storedTodos) setTodos(storedTodos)
+  //   } catch(e) {
+  //   // error reading value
+  //   }
+  // }
  
   // saves todo tasks to local storage
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
-  }, [todos])
+  // const storeData = async (JSON.stringify(todos)) => {
+  //   try {
+  //     await AsyncStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+  //   } catch (e) {
+  //   // saving error
+  //   }
+  // }
 
   function toggleTodo(id) {
     const newTodos = [...todos] 
@@ -45,17 +64,48 @@ function Tasks() {
     const newTodos = todos.filter(todo => !todo.complete)
     setTodos(newTodos)
   }
+
+  state = {
+    value: 'get react to work',
+  }
+
+  handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
+
   
   return (
-    < >
-      { /* passing prop of todos */ }
+    <>
+      <ImageBackground source={backgroundImg} /> 
+      {/* passing prop of todos */}
       <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoNameRef} type="text" />
-      <button onClick={handleAddTodo}> Add Task </button>
-      <button onClick={handleClearTodos}> Clear Completed Tasks</button>
-      <div> {todos.filter(todo => !todo.complete).length} tasks to go! </div>
+
+      <TextInput
+        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+        onChangeText={(text) => onChangeText(text)}
+        value={value}
+      />
+
+      <TextInput
+        ref={todoNameRef}
+        value={this.state.value}
+        onChangetext={(text) => this.handleTextChange}
+        style={{
+          height: 26,
+          fontSize: 20,
+          color: "#000",
+          borderBottomWidth: 1,
+          borderBottomColor: "#555",
+          marginTop: 70,
+        }}
+      />
+      <Button title={"Add Task"} onPress={handleAddTodo} />
+      <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} />
+      <View>
+        <Text>
+          {todos.filter((todo) => !todo.complete).length} tasks to go!
+        </Text>
+      </View>
     </>
-  )
+  );
 } 
 
 export default Tasks;
