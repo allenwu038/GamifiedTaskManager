@@ -7,6 +7,7 @@ export default {
       path: 'root',
       screens: {
         Quests: "quests",
+        Settings: "settings",
         Tasks: "tasks",
       },
     },
