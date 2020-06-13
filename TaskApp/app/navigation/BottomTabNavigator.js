@@ -1,15 +1,18 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import LoginScreen from '../screens/LoginScreen';
-import TaskScreen from "../screens/TaskScreen";
 import QuestScreen from "../screens/QuestScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import TabBarIcon from '../components/TabBarIcon';
+import TaskScreen from "../screens/TaskScreen";
+import { useIsFocused } from '@react-navigation/native';
 
 const BottomTab = createBottomTabNavigator();
-const INITIAL_ROUTE_NAME = 'Login';
+const INITIAL_ROUTE_NAME = "Tasks";
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the
@@ -18,24 +21,53 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator
+      initialRouteName={INITIAL_ROUTE_NAME}
+      // tabBarOptions={{
+      //   activeBackgroundColor: "black"
+      // }}
+    >
       <BottomTab.Screen
         name="Tasks"
         component={TaskScreen}
         options={{
-          title: "To-Do",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-code-working" />
+          tabBarIcon: ({ color, focused, size }) => (
+            <MaterialCommunityIcons
+              focused={focused}
+              name="checkbox-multiple-marked-circle-outline"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
+
       <BottomTab.Screen
         name="Quests"
         component={QuestScreen}
         options={{
-          title: "Quests",
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="md-book" />
+          tabBarIcon: ({ color, focused, size }) => (
+            <MaterialCommunityIcons
+              focused={focused}
+              name="script-outline"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+
+      <BottomTab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, focused, size }) => (
+            <MaterialCommunityIcons
+              focused={focused}
+              name="settings-outline"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
@@ -48,10 +80,12 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Login':
-      return 'Make a profile';
-    case 'Tasks':
-      return 'Get some shit done';
+      return 'Login';
+    case 'Settings':
+      return 'Settings';
     case 'Quests':
-      return 'Rack up rewardz';
+      return 'Quests';
+    case 'Tasks':
+      return 'Tasks';
   }
 }
