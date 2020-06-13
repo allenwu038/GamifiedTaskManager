@@ -21,7 +21,7 @@ export default class TaskInput extends Component {
         <TextInput
           style={{ height: 40 }}
           placeholder="Type task here!"
-          onChangeText={(text) => this.setState(text)}
+          onChangeText={(text) => this.setState({text})}
           defaultValue={this.state.text}
         />
       </View>
