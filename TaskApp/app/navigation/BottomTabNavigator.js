@@ -13,6 +13,8 @@ import TabBarIcon from "../components/TabBarIcon";
 import TaskScreen from "../screens/TaskScreen";
 import { useIsFocused } from "@react-navigation/native";
 
+import Colors from "../constants/Colors";
+
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Tasks";
 
@@ -27,8 +29,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       initialRouteName={INITIAL_ROUTE_NAME}
       tabBarOptions={{
         // activeBackgroundColor: "black"
-        activeTintColor: '#cc99cc',
-        inactiveTintColor: 'gray',
+        activeTintColor: Colors.navActive,
       }}
     >
       <BottomTab.Screen

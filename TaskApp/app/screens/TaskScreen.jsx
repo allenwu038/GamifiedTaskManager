@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import TodoList from './TodoList';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
-import TaskList from "../components/TaskList";
+import TaskList from "../components/Tasks/TaskList";
 
 // import Async from "@react-native-community/async-storage";
 

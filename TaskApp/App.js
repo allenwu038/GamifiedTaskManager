@@ -4,15 +4,17 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator} from '@react-navigation/stack';
 
-// LOCAL SCREEN IMPORTS
+// NAV SCREEN IMPORTS
 import useCachedResources from './app/hooks/useCachedResources';
 import BottomTabNavigator from './app/navigation/BottomTabNavigator';
+import LinkingConfiguration from './app/navigation/LinkingConfiguration';
+
+// LOCAL SCREEN IMPORTS
 import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
-import LinkingConfiguration from './app/navigation/LinkingConfiguration';
-import QuestScreen from './app/screens/QuestScreen';
 import TaskScreen from './app/screens/TaskScreen';
-import TaskList from './app/components/TaskList';
+import TaskList from './app/components/Tasks/TaskList';
+import QuestScreen from './app/screens/QuestScreen';
 
 
 export default function App() {
@@ -23,11 +25,6 @@ export default function App() {
     return null;
   } else {
     return (
-      // <View style={styles.container}>
-      //   <TaskInput/>
-      // </View>
-
-
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
@@ -37,7 +34,6 @@ export default function App() {
             <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
             <Stack.Screen name="TaskScreen" component={TaskScreen} />
-            {/* <Stack.Screen name="pizza" component={PizzaTranslator} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </View>
