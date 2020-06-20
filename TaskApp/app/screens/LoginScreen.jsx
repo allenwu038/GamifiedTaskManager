@@ -10,14 +10,7 @@ import {
 } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
 import logo from '../assets/images/blackbox.png';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import MakeProfile from './MakeProfile';
-
-
-
-const Stack = createStackNavigator();
-
 
 export default function LoginScreen({ navigation }) {
     return ( 

@@ -29,11 +29,14 @@ export default function App() {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="Nav" component={BottomTabNavigator} />
-            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
+            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} /> */}
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="MakeProfile" component={MakeProfile} /> 
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
+<<<<<<< HEAD
             <Stack.Screen name="TaskScreen" component={TaskScreen} />
+=======
+>>>>>>> f31828854c7e82df4644e5c252813dd48a91b507
           </Stack.Navigator>
         </NavigationContainer>
       </View>
