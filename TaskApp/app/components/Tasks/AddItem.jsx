@@ -27,9 +27,11 @@ const AddItem = ({ addItem }) => {
           setText("");
         }}
       >
-        <Text style={styles.btnText}>
-          <Icon name="plus" size={20} /> Add Item
-        </Text>
+      <Icon
+        style={styles.btnText}
+        name="plus"
+        size={20}
+      />
       </TouchableOpacity>
     </View>
   );
