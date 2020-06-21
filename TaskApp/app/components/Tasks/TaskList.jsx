@@ -9,19 +9,23 @@ const TaskList = () => {
   const [items, setItems] = useState([
     {
       id: uuid(),
-      text: "Milk",
+      text: "Malk",
+      completed: false,
     },
     {
       id: uuid(),
-      text: "Eggs",
+      text: "Egges",
+      completed: false,
     },
     {
       id: uuid(),
-      text: "Bread",
+      text: "Breb",
+      completed: false,
     },
     {
       id: uuid(),
-      text: "Juice",
+      text: "Joose",
+      completed: false,
     },
   ]);
 
@@ -83,6 +87,7 @@ const TaskList = () => {
     editItemDetailChange({
       id,
       text,
+      completed,
     });
     return editStatusChange(!editStatus);
   };
@@ -92,13 +97,29 @@ const TaskList = () => {
       (checkedItem) => checkedItem.id === id
     );
     isChecked.length
-      ? // remove item from checked items state (uncheck)
+      ? // remove item from unchecked items state (check)
         checkedItemChange((prevItems) => {
           return [...prevItems.filter((item) => item.id !== id)];
         })
       : // Add item to checked items state
         checkedItemChange((prevItems) => {
+          // this.setState({checked: !this.state.checked})
           return [...prevItems.filter((item) => item.id !== id), { id, text }];
+        });
+  };
+
+  const itemUnChecked = (id, text) => {
+    const isChecked = checkedItems.filter(
+      (checkedItem) => checkedItem.id === id
+    );
+    isChecked.length
+      ? // remove item from checked items state (uncheck)
+        checkedItemChange((prevItems) => {
+          return [...prevItems.filter((item) => item.id === id)];
+        })
+      : // Add item to unchecked items state
+        checkedItemChange((prevItems) => {
+          return [...prevItems.filter((item) => item.id === id), { id, text }];
         });
   };
 
@@ -117,6 +138,7 @@ const TaskList = () => {
             saveEditItem={saveEditItem}
             handleEditChange={handleEditChange}
             itemChecked={itemChecked}
+            itemUnChecked={itemUnChecked}
             checkedItems={checkedItems}
           />
         )}
