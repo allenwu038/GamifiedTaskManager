@@ -18,6 +18,7 @@ const Task = ({
   saveEditItem,
   handleEditChange,
   itemChecked,
+  itemUnChecked,
   checkedItems,
 }) => {
   const checked = checkedItems.filter(
@@ -36,36 +37,36 @@ const Task = ({
           <Text
             onPress={() => itemChecked(item.id, item.text)}
             style={
-              checked.length ? styles.checkedItemText : styles.listItemText
+              item.completed ? styles.checkedItemText : styles.listItemText
             }
           >
             {item.text}
           </Text>
         )}
         <View style={styles.iconView}>
-          {isEditing && editItemDetail.id === item.id ? (
+          {item.completed ? (
             <Icon
-              name="save"
-              size={20}
-              color="green"
-              onPress={() => saveEditItem(item.id, item.text)}
+              name="check-circle"
+              style={styles.iconView}
+              size={25}
+              color="grey"
+              onPress={() => {
+                item.completed = false;
+                itemUnChecked(item.id, item.text);
+              }}
             />
           ) : (
-            !checked.length && (
-              <Icon
-                name="pencil"
-                size={20}
-                color={Colors.taskEdit}
-                onPress={() => editItem(item.id, item.text)}
-              />
-            )
+            <Icon
+              name="circle"
+              style={styles.iconView}
+              size={25}
+              color="grey"
+              onPress={() => {
+                item.completed = true;
+                itemChecked(item.id, item.text);
+              }}
+            />
           )}
-          <Icon
-            name="remove"
-            size={20}
-            color="firebrick"
-            onPress={() => deleteItem(item.id)}
-          />
         </View>
       </View>
     </TouchableOpacity>
@@ -90,12 +91,15 @@ const styles = StyleSheet.create({
   checkedItemText: {
     fontSize: 18,
     textDecorationLine: "line-through",
-    color: "green",
+    color: "grey",
   },
-  iconView: {
+  iconDiv: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     width: 70,
+  },
+  iconView: {
+    color: "grey",
   },
   editItemInput: {
     padding: 0,
