@@ -15,11 +15,13 @@ import MakeProfile from './app/screens/MakeProfile';
 import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/Tasks/TaskList';
 import QuestScreen from './app/screens/QuestScreen';
+import { Storage } from '../util/AsyncStorage.jsx';
 
 
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
+  
   
   if (!isLoadingComplete) {
     return null;
@@ -29,11 +31,11 @@ export default function App() {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            <Stack.Screen name="Nav" component={BottomTabNavigator} />
-            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} />  */}
+            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} />*/}
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="MakeProfile" component={MakeProfile} /> 
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
-            {/* <Stack.Screen name="TaskScreen" component={TaskScreen} /> */}
+            <Stack.Screen name="TaskScreen" component={TaskScreen} /> 
           </Stack.Navigator>
         </NavigationContainer>
       </View>

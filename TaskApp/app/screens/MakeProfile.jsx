@@ -1,16 +1,15 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import {
     StyleSheet,
-    View, 
     ImageBackground, 
-    Image,
     Button, 
+    Text,
+    TouchableWithoutFeedback,
   } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
-import { Text, TextInput } from 'react-native';
 import { SliderBox } from "react-native-image-slider-box";
-
-//import {SliderBox} from "./SliderBox.jsx";
+import EnterTextInput from '../util/TextInput.jsx';
+import { Storage } from '../util/AsyncStorage.jsx';
 
 export default function MakeProfile({navigation}){
     let images= [
@@ -19,25 +18,13 @@ export default function MakeProfile({navigation}){
       "https://source.unsplash.com/1024x768/?girl", // Network image
     ];
 
-    state = {
-      value: ' ',
-    }
-
-    handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
-
     return (  
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
-            
-          <Text style={styles.text}>
-            Enter Your Name:
+          <Text style={{fontSize: 16, color: '#000', marginTop: 350, padding: 0,}}>
+            Enter Name Here:
           </Text>
-          <TextInput 
-            
-            onChangetext={handleTextChange}
-            value={state.value}
-            style={styles.textInput}
-          />
-          <Text style={{ fontSize: 14, color: '#000', marginTop: 100, padding: 0}}>
+          <EnterTextInput/>
+          <Text style={styles.text}>
             Scroll along the dots to choose an avatar:
           </Text>
           <SliderBox 
@@ -52,11 +39,7 @@ export default function MakeProfile({navigation}){
               dotStyle = { {width: 15, height: 15, marginBottom: 450} }
               ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 55} }
           />
-          <Button
-          title="Next"
-          style ={styles.bottom}
-          onPress={() => navigation.navigate('TaskScreen')}
-          />
+          
       </ImageBackground>
         
     )
@@ -75,9 +58,10 @@ const styles = StyleSheet.create ({
     paddingTop: 100,
   },
   text: { 
-    fontSize: 14, 
+    fontSize: 16, 
     color: '#000', 
-    marginTop:300,
+    marginTop: 50, 
+    padding: 0,
   },
   textInput: {
     height: 50, 
@@ -87,12 +71,6 @@ const styles = StyleSheet.create ({
     padding: 8, 
     margin: 10, 
     width:200,
-    },
-    rectangle: {
-    position: 'absolute',
-    width: 500,
-    height: 315,
-    color: '#000',
   },
   bottom: {
     position: 'absolute',
