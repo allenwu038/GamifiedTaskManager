@@ -15,7 +15,7 @@ import MakeProfile from './app/screens/MakeProfile';
 import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/Tasks/TaskList';
 import QuestScreen from './app/screens/QuestScreen';
-import { Storage } from '../util/AsyncStorage.jsx';
+import GetUser from './app/util/GetUser.jsx';
 
 
 export default function App() {

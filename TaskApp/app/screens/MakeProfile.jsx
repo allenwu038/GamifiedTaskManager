@@ -4,12 +4,15 @@ import {
     ImageBackground, 
     Button, 
     Text,
-    TouchableWithoutFeedback,
+    View,
+    TouchableWithoutFeedback, 
   } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
 import { SliderBox } from "react-native-image-slider-box";
 import EnterTextInput from '../util/TextInput.jsx';
-import { Storage } from '../util/AsyncStorage.jsx';
+// import ProfileNavButton from '../util/MakeProfileNav.jsx';
+import SaveUserId from '../util/SaveUser.jsx';
+
 
 export default function MakeProfile({navigation}){
     let images= [
@@ -39,11 +42,23 @@ export default function MakeProfile({navigation}){
               dotStyle = { {width: 15, height: 15, marginBottom: 450} }
               ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 55} }
           />
-          
+          <View style={styles.button}>
+            <Text>
+                Changes can be made later.
+            </Text>
+            <Button
+              title="Next"
+              onPress={
+                () => {
+                  SaveUserId('Bob');
+                  navigation.navigate('TaskScreen');
+                }
+              }
+            />
+          </View>         
       </ImageBackground>
         
-    )
-        
+    )  
 };
 
 const styles = StyleSheet.create ({
@@ -72,12 +87,14 @@ const styles = StyleSheet.create ({
     margin: 10, 
     width:200,
   },
-  bottom: {
-    position: 'absolute',
-    padding: 20,
-    flex: 1,
-    bottom: 0,
-    width: 500,
-    backgroundColor: '#FFEE58',
-  },
+  button: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    position: 'absolute', 
+    top: 670, 
+    backgroundColor: "white",
+    paddingVertical: 40, 
+    paddingHorizontal: 105,
+  }
 });
