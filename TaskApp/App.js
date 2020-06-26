@@ -31,9 +31,9 @@ export default function App() {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} />*/}
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} /> 
+            <Stack.Screen name="Nav" component={BottomTabNavigator} />
+            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
+            {/* <Stack.Screen name="MakeProfile" component={MakeProfile} />  */}
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
             <Stack.Screen name="TaskScreen" component={TaskScreen} /> 
           </Stack.Navigator>

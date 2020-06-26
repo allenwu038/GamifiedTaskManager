@@ -2,6 +2,7 @@ import * as React from "react";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
@@ -14,8 +15,9 @@ import TaskScreen from "../screens/TaskScreen";
 import { useIsFocused } from "@react-navigation/native";
 
 import Colors from "../constants/Colors";
+import Layout from "../constants/Layout";
 
-const BottomTab = createBottomTabNavigator();
+const BottomTab = createMaterialTopTabNavigator();
 const INITIAL_ROUTE_NAME = "Tasks";
 
 export default function BottomTabNavigator({ navigation, route }) {
@@ -27,10 +29,17 @@ export default function BottomTabNavigator({ navigation, route }) {
   return (
     <BottomTab.Navigator
       initialRouteName={INITIAL_ROUTE_NAME}
+      swipeEnabled={true}
       tabBarOptions={{
         // activeBackgroundColor: "black"
         activeTintColor: Colors.navActive,
+        showIcon: true,
+        showLabel: false,
+        indicatorStyle: {
+          backgroundColor: Colors.navActive,
+        }
       }}
+      tabBarPosition="bottom"
     >
       <BottomTab.Screen
         name="Tasks"
@@ -41,7 +50,7 @@ export default function BottomTabNavigator({ navigation, route }) {
               focused={focused}
               name="checkbox-multiple-marked-circle-outline"
               color={color}
-              size={size}
+              size={Layout.navIconSize}
             />
           ),
         }}
@@ -56,7 +65,7 @@ export default function BottomTabNavigator({ navigation, route }) {
               focused={focused}
               name="script-outline"
               color={color}
-              size={size}
+              size={Layout.navIconSize}
             />
           ),
         }}
@@ -71,7 +80,7 @@ export default function BottomTabNavigator({ navigation, route }) {
               focused={focused}
               name="person-outline"
               color={color}
-              size={size}
+              size={Layout.navIconSize}
             />
           ),
         }}
@@ -86,7 +95,7 @@ export default function BottomTabNavigator({ navigation, route }) {
               focused={focused}
               name="settings-outline"
               color={color}
-              size={size}
+              size={Layout.navIconSize}
             />
           ),
         }}
