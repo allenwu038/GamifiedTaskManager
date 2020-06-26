@@ -15,13 +15,13 @@ import MakeProfile from './app/screens/MakeProfile';
 import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/Tasks/TaskList';
 import QuestScreen from './app/screens/QuestScreen';
-import GetUser from './app/util/GetUser.jsx';
+import GetUserId from './app/util/GetUser.jsx';
 
 
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
-  
+  const userId = (GetUserId() == 'none') ? 0 : 1;
   
   if (!isLoadingComplete) {
     return null;
@@ -32,8 +32,8 @@ export default function App() {
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
             {/* <Stack.Screen name="Nav" component={BottomTabNavigator} />*/}
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} /> 
+            { userId && <Stack.Screen name="LoginScreen" component={LoginScreen} />}
+            { userId && <Stack.Screen name="MakeProfile" component={MakeProfile} />}
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
             <Stack.Screen name="TaskScreen" component={TaskScreen} /> 
           </Stack.Navigator>

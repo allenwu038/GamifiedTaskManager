@@ -5,11 +5,11 @@ import {
     Button, 
     Text,
     View,
-    TouchableWithoutFeedback, 
+    TextInput, 
   } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
 import { SliderBox } from "react-native-image-slider-box";
-import EnterTextInput from '../util/TextInput.jsx';
+//import EnterTextInput from '../util/TextInput.jsx';
 // import ProfileNavButton from '../util/MakeProfileNav.jsx';
 import SaveUserId from '../util/SaveUser.jsx';
 
@@ -20,13 +20,19 @@ export default function MakeProfile({navigation}){
       "https://source.unsplash.com/1024x768/?water",
       "https://source.unsplash.com/1024x768/?girl", // Network image
     ];
+    const [value, onChangeText] = React.useState('');
 
-    return (  
+    return (
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
           <Text style={{fontSize: 16, color: '#000', marginTop: 350, padding: 0,}}>
             Enter Name Here:
           </Text>
-          <EnterTextInput/>
+          <TextInput
+            style={styles.textInput} 
+            onChangeText={text => onChangeText(text)}
+            value={value}
+          />
+          {/*<EnterTextInput/>*/}
           <Text style={styles.text}>
             Scroll along the dots to choose an avatar:
           </Text>
@@ -50,7 +56,7 @@ export default function MakeProfile({navigation}){
               title="Next"
               onPress={
                 () => {
-                  SaveUserId('Bob');
+                  SaveUserId(value);
                   navigation.navigate('TaskScreen');
                 }
               }
@@ -60,6 +66,7 @@ export default function MakeProfile({navigation}){
         
     )  
 };
+
 
 const styles = StyleSheet.create ({
   backgroundContainer: {
@@ -78,15 +85,27 @@ const styles = StyleSheet.create ({
     marginTop: 50, 
     padding: 0,
   },
+  // textInput: {
+  //   height: 50, 
+  //   borderWidth: 1, 
+  //   textAlign: 'center', 
+  //   borderColor: '#777', 
+  //   padding: 8, 
+  //   margin: 10, 
+  //   width:200,
+  // },
   textInput: {
-    height: 50, 
+    height: 65, 
     borderWidth: 1, 
     textAlign: 'center', 
     borderColor: '#777', 
-    padding: 8, 
+    textDecorationColor: '#777',
+    fontSize: 16,
+    padding: 0, 
     margin: 10, 
-    width:200,
-  },
+    marginTop: 25,
+    width:230,
+    },
   button: {
     flex: 1, 
     alignItems: 'center', 

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import TodoList from './TodoList';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
 import TaskList from "../components/Tasks/TaskList";
+import GetUserId from '../util/GetUser.jsx';
 
 // import Async from "@react-native-community/async-storage";
 
@@ -72,9 +73,14 @@ function TaskScreen() {
   // }
 
   // handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
-
+  let promise = GetUserId();
+  let userId;
+  promise.then(function(id) {
+      userId = id;
+  });
   
   return (
+    
     <>
       <ImageBackground
         source={backgroundImg}
@@ -104,11 +110,16 @@ function TaskScreen() {
       /> */}
       {/* <Button title={"Add Task"} onPress={handleAddTodo} /> */}
       {/* <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} /> */}
+      {GetUserId()}     
       <View>
+        <Text styles={{fontSize: 300, position: "absolute", color: "black"}}>
+          {userId}
+        </Text>
         <TaskList/>
         {/* <Text>
           {todos.filter((todo) => !todo.complete).length} tasks to go!
         </Text> */}
+        
       </View>
     </>
   );
