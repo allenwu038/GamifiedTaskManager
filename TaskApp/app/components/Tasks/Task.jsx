@@ -78,7 +78,7 @@ const Task = ({
           name="remove"
           style={styles.iconView}
           size={25}
-          color="grey"
+          color="#fa867e"
           onPress={() => {
             deleteItem(item.id);
           }}
@@ -99,17 +99,15 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   listItemContainer: {
-    width: 80,
+    flex: 13,
   },
   listItemView: {
-    // flexDirection: "row",
     justifyContent: "space-between",
-    // width: 50,
-    // flex: 2, 
-    alignItems: "center",
   },
   listItemText: {
     fontSize: 18,
+    alignSelf: "flex-start",
+    paddingLeft: 15,
   },
   checkedItemText: {
     fontSize: 18,
@@ -117,11 +115,9 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   iconView: {
-    // flexDirection: "row",
     justifyContent: 'space-evenly',
-    color: "grey",
-    width: 25,
-    // flex: 1,
+    //color: "grey",
+    flex: 1,
   },
   editItemInput: {
     padding: 0,
