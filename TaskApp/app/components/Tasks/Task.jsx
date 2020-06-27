@@ -26,6 +26,32 @@ const Task = ({
   );
   return (
     <TouchableOpacity style={styles.listItem}>
+      <View style={styles.iconView}>
+        {item.completed ? (
+          <Icon
+            name="check-circle"
+            style={styles.iconView}
+            size={25}
+            color="grey"
+            onPress={() => {
+              item.completed = false;
+              itemUnChecked(item.id, item.text);
+            }}
+          />
+        ) : (
+          <Icon
+            name="circle"
+            style={styles.iconView}
+            size={25}
+            color="grey"
+            onPress={() => {
+              item.completed = true;
+              itemChecked(item.id, item.text);
+            }}
+          />
+        )}
+      </View>
+
       <View style={styles.listItemView}>
         {isEditing && editItemDetail.id === item.id ? (
           <TextInput
@@ -43,31 +69,6 @@ const Task = ({
             {item.text}
           </Text>
         )}
-        <View style={styles.iconView}>
-          {item.completed ? (
-            <Icon
-              name="check-circle"
-              style={styles.iconView}
-              size={25}
-              color="grey"
-              onPress={() => {
-                item.completed = false;
-                itemUnChecked(item.id, item.text);
-              }}
-            />
-          ) : (
-            <Icon
-              name="circle"
-              style={styles.iconView}
-              size={25}
-              color="grey"
-              onPress={() => {
-                item.completed = true;
-                itemChecked(item.id, item.text);
-              }}
-            />
-          )}
-        </View>
       </View>
     </TouchableOpacity>
   );
@@ -79,10 +80,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f8f8",
     borderBottomWidth: 1,
     borderColor: "#eee",
+    justifyContent: "space-between",
+    display: "inline",
+    wrap: "false"
   },
   listItemView: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    flex: 1, 
+    //justifyContent: "space-between",
     alignItems: "center",
   },
   listItemText: {
@@ -95,7 +100,7 @@ const styles = StyleSheet.create({
   },
   iconDiv: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    //justifyContent: "space-evenly",
     width: 70,
   },
   iconView: {
