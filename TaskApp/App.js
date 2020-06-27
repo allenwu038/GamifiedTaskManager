@@ -21,7 +21,7 @@ import GetUserId from './app/util/GetUser.jsx';
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
-  const userId = (GetUserId() == 'none') ? 0 : 1;
+  // const userId = (GetUserId() == 'none') ? 0 : 1;
   
   if (!isLoadingComplete) {
     return null;
@@ -31,11 +31,11 @@ export default function App() {
         {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
-            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} />*/}
-            { userId && <Stack.Screen name="LoginScreen" component={LoginScreen} />}
-            { userId && <Stack.Screen name="MakeProfile" component={MakeProfile} />}
+            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} /> */}
+            {/* { userId && <Stack.Screen name="LoginScreen" component={LoginScreen} />}
+            { userId && <Stack.Screen name="MakeProfile" component={MakeProfile} />} */}
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
-            <Stack.Screen name="TaskScreen" component={TaskScreen} /> 
+            <Stack.Screen name="TaskScreen" component={TaskList} /> 
           </Stack.Navigator>
         </NavigationContainer>
       </View>
