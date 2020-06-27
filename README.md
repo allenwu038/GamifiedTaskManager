@@ -44,12 +44,22 @@ Until the team otherwise discusses, all changes to the project files should happ
 Once you have a local develop branch, you always want to push to _"origin/develop"_. As long as Git displays your branch as "develop" instead of "master", it should do this automatically.
 
 ## DEPENDENCIES
+### If things are wrong ):
+1. Delete node_modules.
+2. Remove package-lock.json
+3. Run `npm install`.
+
 ### Icons
-```
-npm install react-native-vector-icons
-```
+`npm install react-native-vector-icons`
+
+### Image Slider Box
+`npm i react-native-image-slider-box`
+
 ### Navigation
 ```
 npm install react-native-navigator
 npm install @react-navigation/material-top-tabs
 ```
+
+### Storage
+`yarn add @react-native-community/async-storage`
