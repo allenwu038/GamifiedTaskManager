@@ -27,6 +27,11 @@ const TaskList = () => {
       text: "Joose",
       completed: false,
     },
+    {
+      id: uuid(),
+      text: "Here is a super long piece of text to exceed the text container",
+      completed: false,
+    }
   ]);
 
   // Flag true if user is currently editing an item
@@ -131,15 +136,16 @@ const TaskList = () => {
         renderItem={({ item }) => (
           <Task
             item={item}
+            key={item.id}
             deleteItem={deleteItem}
             editItem={editItem}
             isEditing={editStatus}
             editItemDetail={editItemDetail}
             saveEditItem={saveEditItem}
             handleEditChange={handleEditChange}
+            checkedItems={checkedItems}
             itemChecked={itemChecked}
             itemUnChecked={itemUnChecked}
-            checkedItems={checkedItems}
           />
         )}
       />
@@ -150,6 +156,7 @@ const TaskList = () => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
+    flex: 1
   },
 });
 

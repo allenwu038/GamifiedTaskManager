@@ -52,23 +52,37 @@ const Task = ({
         )}
       </View>
 
-      <View style={styles.listItemView}>
-        {isEditing && editItemDetail.id === item.id ? (
-          <TextInput
-            placeholder="Edit task"
-            style={styles.editItemInput}
-            onChangeText={handleEditChange}
-          />
-        ) : (
-          <Text
-            onPress={() => itemChecked(item.id, item.text)}
-            style={
-              item.completed ? styles.checkedItemText : styles.listItemText
-            }
-          >
-            {item.text}
-          </Text>
-        )}
+      <View style={styles.listItemContainer}>
+        <View style={styles.listItemView}>
+          {isEditing && editItemDetail.id === item.id ? (
+            <TextInput
+              placeholder="Edit task"
+              style={styles.editItemInput}
+              onChangeText={handleEditChange}
+            />
+          ) : (
+            <Text
+              onPress={() => itemChecked(item.id, item.text)}
+              style={
+                item.completed ? styles.checkedItemText : styles.listItemText
+              }
+            >
+              {item.text}
+            </Text>
+          )}
+        </View>
+      </View>
+
+      <View style={styles.iconView}>
+        <Icon
+          name="remove"
+          style={styles.iconView}
+          size={25}
+          color="grey"
+          onPress={() => {
+            deleteItem(item.id);
+          }}
+        />
       </View>
     </TouchableOpacity>
   );
@@ -80,14 +94,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#f8f8f8",
     borderBottomWidth: 1,
     borderColor: "#eee",
-    justifyContent: "space-between",
-    display: "inline",
-    wrap: "false"
+    flexShrink: 0,
+    flexWrap: "nowrap",
+    flexDirection: "row"
+  },
+  listItemContainer: {
+    width: 80,
   },
   listItemView: {
-    flexDirection: "row",
-    flex: 1, 
-    //justifyContent: "space-between",
+    // flexDirection: "row",
+    justifyContent: "space-between",
+    // width: 50,
+    // flex: 2, 
     alignItems: "center",
   },
   listItemText: {
@@ -98,13 +116,12 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through",
     color: "grey",
   },
-  iconDiv: {
-    flexDirection: "row",
-    //justifyContent: "space-evenly",
-    width: 70,
-  },
   iconView: {
+    // flexDirection: "row",
+    justifyContent: 'space-evenly',
     color: "grey",
+    width: 25,
+    // flex: 1,
   },
   editItemInput: {
     padding: 0,
