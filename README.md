@@ -42,3 +42,14 @@ Once you reach this point, congrats! You have everything set up to start develop
 Until the team otherwise discusses, all changes to the project files should happen in the develop branch. This is because only working prototypes should live on the master branch. 
 
 Once you have a local develop branch, you always want to push to _"origin/develop"_. As long as Git displays your branch as "develop" instead of "master", it should do this automatically.
+
+## DEPENDENCIES
+### Icons
+```
+npm install react-native-vector-icons
+```
+### Navigation
+```
+npm install react-native-navigator
+npm install @react-navigation/material-top-tabs
+```
