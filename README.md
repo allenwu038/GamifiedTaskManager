@@ -59,6 +59,7 @@ Once you have a local develop branch, you always want to push to _"origin/develo
 ```
 npm install react-native-navigator
 npm install @react-navigation/material-top-tabs
+npm install @react-navigation/devtools
 ```
 
 ### Storage

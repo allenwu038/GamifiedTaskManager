@@ -15,6 +15,7 @@
     "@expo/vector-icons": "~10.0.6",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/bottom-tabs": "^5.3.1",
+    "@react-navigation/devtools": "^5.1.1",
     "@react-navigation/material-top-tabs": "^5.2.12",
     "@react-navigation/native": "^5.5.1",
     "@react-navigation/stack": "^5.5.1",
