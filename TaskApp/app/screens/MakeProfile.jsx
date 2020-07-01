@@ -21,10 +21,9 @@ export default function MakeProfile({navigation}){
       "https://source.unsplash.com/1024x768/?girl", // Network image
     ];
     const [value, onChangeText] = React.useState('');
-
     return (
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
-          <Text style={{fontSize: 16, color: '#000', marginTop: 350, padding: 0,}}>
+          <Text style={{fontSize: 16, color: '#000', marginTop: '10%', padding: 0,}}>
             Enter Name Here:
           </Text>
           <TextInput
@@ -40,12 +39,12 @@ export default function MakeProfile({navigation}){
               images= {images}
               //onCurrentImagePressed={index => handlePress(index)}
               dotColor="#FFEE58"
-              sliderBoxHeight = {300}
+              sliderBoxHeight = {200}
               inactiveDotColor="#90A4EA"
               circleLoop
               resizeMethod={'resize'}
               resizeMode={'cover'}
-              dotStyle = { {width: 15, height: 15, marginBottom: 450} }
+              dotStyle = { {width: 15, height: 15, marginBottom: 400} }
               ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 55} }
           />
           <View style={styles.button}>
@@ -95,15 +94,15 @@ const styles = StyleSheet.create ({
   //   width:200,
   // },
   textInput: {
-    height: 65, 
+    height: 40, 
     borderWidth: 1, 
     textAlign: 'center', 
     borderColor: '#777', 
     textDecorationColor: '#777',
     fontSize: 16,
     padding: 0, 
-    margin: 10, 
-    marginTop: 25,
+    //margin: 10, 
+    marginTop: 20,
     width:230,
     },
   button: {
@@ -111,9 +110,9 @@ const styles = StyleSheet.create ({
     alignItems: 'center', 
     justifyContent: 'center', 
     position: 'absolute', 
-    top: 670, 
+    bottom: 0,
     backgroundColor: "white",
-    paddingVertical: 40, 
-    paddingHorizontal: 105,
+    paddingVertical: 30, 
+    paddingHorizontal: '28%',
   }
 });

@@ -18,7 +18,7 @@ import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
 const BottomTab = createMaterialTopTabNavigator();
-const INITIAL_ROUTE_NAME = "Tasks";
+const INITIAL_ROUTE_NAME = "Login";
 
 export default function BottomTabNavigator({ navigation, route }) {
   // Set the header title on the parent stack navigator depending on the

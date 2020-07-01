@@ -74,6 +74,8 @@ function TaskScreen() {
 
   // handleTextChange = (newText) => this.ListeningStateChangedEvent({value: newText})
   let promise = GetUserId();
+  console.log(promise);
+  console.log("got past promise");
   let userId;
   promise.then(function(id) {
       userId = id;

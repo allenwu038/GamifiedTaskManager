@@ -32,10 +32,10 @@ export default function App() {
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
             {/* <Stack.Screen name="Nav" component={BottomTabNavigator} /> */}
-            {/* { userId && <Stack.Screen name="LoginScreen" component={LoginScreen} />}
-            { userId && <Stack.Screen name="MakeProfile" component={MakeProfile} />} */}
+            { <Stack.Screen name="LoginScreen" component={LoginScreen} />}
+            { <Stack.Screen name="MakeProfile" component={MakeProfile} />}
             {/* <Stack.Screen name="Quest" component={QuestScreen} /> */}
-            <Stack.Screen name="TaskScreen" component={TaskList} /> 
+            { <Stack.Screen name="TaskScreen" component={TaskList} /> }
           </Stack.Navigator>
         </NavigationContainer>
       </View>
