@@ -11,11 +11,12 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 
 import { MonoText } from "../components/StyledText";
+import LevelList from "../components/levels/level.jsx";
 
 export default function QuestScreen() {
   return (
     <View>
-      
+      <LevelList/>
     </View>
   );
 }

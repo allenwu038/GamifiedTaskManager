@@ -23,7 +23,7 @@ export default function MakeProfile({navigation}){
     const [value, onChangeText] = React.useState('');
     return (
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
-          <Text style={{fontSize: 16, color: '#000', marginTop: '10%', padding: 0,}}>
+          <Text style={{fontSize: 16, color: '#000', marginTop: '47%', padding: 0,}}>
             Enter Name Here:
           </Text>
           <TextInput
@@ -44,8 +44,8 @@ export default function MakeProfile({navigation}){
               circleLoop
               resizeMethod={'resize'}
               resizeMode={'cover'}
-              dotStyle = { {width: 15, height: 15, marginBottom: 400} }
-              ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 55} }
+              dotStyle = { {width: 15, height: 15, marginBottom: 390} }
+              ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 75} }
           />
           <View style={styles.button}>
             <Text>
@@ -113,6 +113,6 @@ const styles = StyleSheet.create ({
     bottom: 0,
     backgroundColor: "white",
     paddingVertical: 30, 
-    paddingHorizontal: '28%',
+    paddingHorizontal: '24%',
   }
 });
