@@ -15,13 +15,15 @@ import MakeProfile from './app/screens/MakeProfile';
 import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/Tasks/TaskList';
 import QuestScreen from './app/screens/QuestScreen';
-import GetUserId from './app/util/GetUser.jsx';
 
+// ASYNC STORAGE
+import GetUserId from './app/util/GetUser.jsx';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
-  // const userId = (GetUserId() == 'none') ? 0 : 1;
+  const userId = '@userId'
   
   if (!isLoadingComplete) {
     return null;
@@ -32,10 +34,10 @@ export default function App() {
         <NavigationContainer linking={LinkingConfiguration}>
           <Stack.Navigator>
             {/* <Stack.Screen name="Nav" component={BottomTabNavigator} /> */}
-            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} /> */}
-            {/* <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
+            { <Stack.Screen name="LoginScreen" component={LoginScreen} />}
+            { <Stack.Screen name="MakeProfile" component={MakeProfile} />}
             { <Stack.Screen name="Quest" component={QuestScreen} /> }
-            {/* <Stack.Screen name="TaskScreen" component={TaskList} /> */}
+            { <Stack.Screen name="TaskScreen" component={TaskList} /> }
           </Stack.Navigator>
         </NavigationContainer>
       </View>

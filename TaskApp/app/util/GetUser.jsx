@@ -4,6 +4,7 @@ const GetUserId = async () => {
     let userId = '';
     try {
         userId = await AsyncStorage.getItem('userId');
+        userId = JSON.parse(userId);
         // if(value !== null) {
         //     // value previously stored
         // }
