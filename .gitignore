@@ -5,6 +5,8 @@ TaskApp/expo/*
 TaskApp/.expo
 TaskApp/.expo/*
 TaskApp/.expo/packager-info.json
+TaskApp/package.json
+TaskApp/yarn.lock
 npm-debug.*
 *.jks
 *.p8
@@ -20,3 +22,5 @@ web-build/
 # Kip's Design Iteration Templates
 ./IdeateTemplates
 TaskApp/package-lock.json
+TaskApp/package.json
+TaskApp/package.json
