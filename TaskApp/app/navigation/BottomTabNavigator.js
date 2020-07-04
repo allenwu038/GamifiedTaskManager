@@ -1,8 +1,9 @@
 import * as React from "react";
+import { View } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
@@ -12,6 +13,7 @@ import QuestScreen from "../screens/QuestScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
 import TaskScreen from "../screens/TaskScreen";
+import TopNav from "./TopNav";
 import { useIsFocused } from "@react-navigation/native";
 
 import Colors from "../constants/Colors";
@@ -27,80 +29,69 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator
-      initialRouteName={INITIAL_ROUTE_NAME}
-      swipeEnabled={true}
-      tabBarOptions={{
-        // activeBackgroundColor: "black"
-        activeTintColor: Colors.navActive,
-        showIcon: true,
-        showLabel: false,
-        indicatorStyle: {
-          backgroundColor: Colors.navActive,
-        }
-      }}
-      tabBarPosition="bottom"
-    >
-      <BottomTab.Screen
-        name="Tasks"
-        component={TaskScreen}
-        options={{
-          tabBarIcon: ({ color, focused, size }) => (
-            <MaterialCommunityIcons
-              focused={focused}
-              name="checkbox-multiple-marked-circle-outline"
-              color={color}
-              size={Layout.navIconSize}
-            />
-          ),
-        }}
-      />
+    <View style={{ flex: 1 }}>
+      <TopNav navigation = {navigation}/>
 
-      <BottomTab.Screen
-        name="Quests"
-        component={QuestScreen}
-        options={{
-          tabBarIcon: ({ color, focused, size }) => (
-            <MaterialCommunityIcons
-              focused={focused}
-              name="script-outline"
-              color={color}
-              size={Layout.navIconSize}
-            />
-          ),
+      <BottomTab.Navigator
+        initialRouteName={INITIAL_ROUTE_NAME}
+        swipeEnabled={true}
+        tabBarOptions={{
+          // activeBackgroundColor: "black"
+          activeTintColor: Colors.navActive,
+          showIcon: true,
+          showLabel: false,
+          indicatorStyle: {
+            backgroundColor: Colors.navActive,
+          },
         }}
-      />
+        tabBarPosition="bottom"
+      >
+        <BottomTab.Screen
+          name="Habits"
+          component={CharacterScreen}
+          options={{
+            tabBarIcon: ({ color, focused, size }) => (
+              <MaterialCommunityIcons
+                focused={focused}
+                name="calendar-star"
+                color={color}
+                size={Layout.navIconSize}
+              />
+            ),
+          }}
+        />
 
-      <BottomTab.Screen
-        name="Character"
-        component={CharacterScreen}
-        options={{
-          tabBarIcon: ({ color, focused, size }) => (
-            <MaterialIcons
-              focused={focused}
-              name="person-outline"
-              color={color}
-              size={Layout.navIconSize}
-            />
-          ),
-        }}
-      />
+        <BottomTab.Screen
+          name="Tasks"
+          component={TaskScreen}
+          options={{
+            tabBarIcon: ({ color, focused, size }) => (
+              <MaterialCommunityIcons
+                focused={focused}
+                name="checkbox-multiple-marked-circle-outline"
+                color={color}
+                size={Layout.navIconSize}
+              />
+            ),
+          }}
+        />
 
-      <BottomTab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarIcon: ({ color, focused, size }) => (
-            <MaterialCommunityIcons
-              focused={focused}
-              name="settings-outline"
-              color={color}
-              size={Layout.navIconSize}
-            />
-          ),
-        }}
-      />
-    </BottomTab.Navigator>
+        <BottomTab.Screen
+          name="Quests"
+          component={QuestScreen}
+          options={{
+            tabBarIcon: ({ color, focused, size }) => (
+              <MaterialCommunityIcons
+                focused={focused}
+                name="script-outline"
+                color={color}
+                size={Layout.navIconSize}
+              />
+            ),
+          }}
+        />
+      </BottomTab.Navigator>
+    </View>
   );
 }
 

@@ -10,8 +10,10 @@ import BottomTabNavigator from './app/navigation/BottomTabNavigator';
 import LinkingConfiguration from './app/navigation/LinkingConfiguration';
 
 // LOCAL SCREEN IMPORTS
+import CharacterScreen from './app/screens/CharacterScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import MakeProfile from './app/screens/MakeProfile';
+import SettingsScreen from './app/screens/SettingsScreen';
 import TaskScreen from './app/screens/TaskScreen';
 import TaskList from './app/components/Tasks/TaskList';
 import QuestScreen from './app/screens/QuestScreen';
@@ -30,14 +32,20 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+        {Platform.OS === "ios" && <StatusBar barStyle="dark-content" />}
         <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            {/* <Stack.Screen name="Nav" component={BottomTabNavigator} /> */}
-            { <Stack.Screen name="LoginScreen" component={LoginScreen} />}
-            { <Stack.Screen name="MakeProfile" component={MakeProfile} />}
-            { <Stack.Screen name="Quest" component={QuestScreen} /> }
-            { <Stack.Screen name="TaskScreen" component={TaskList} /> }
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="BotNav" component={BottomTabNavigator} />
+            {<Stack.Screen name="LoginScreen" component={LoginScreen} />}
+            {<Stack.Screen name="MakeProfile" component={MakeProfile} />}
+            {<Stack.Screen name="Quest" component={QuestScreen} />}
+            {<Stack.Screen name="TaskScreen" component={TaskList} />}
+            {<Stack.Screen name="CharacterScreen" component={CharacterScreen} />}
+            {<Stack.Screen name="SettingsScreen" component={SettingsScreen} />}
           </Stack.Navigator>
         </NavigationContainer>
       </View>
