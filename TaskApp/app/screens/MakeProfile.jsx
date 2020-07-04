@@ -12,58 +12,80 @@ import { SliderBox } from "react-native-image-slider-box";
 //import EnterTextInput from '../util/TextInput.jsx';
 // import ProfileNavButton from '../util/MakeProfileNav.jsx';
 import SaveUserId from '../util/SaveUser.jsx';
+import { useNavigation } from "@react-navigation/native";
+import GetUserId from '../util/GetUser';
 
+export default function(props) {
+  const navigation = useNavigation();
+  return <MakeProfile navigation={navigation} />;
+}
 
-export default function MakeProfile({navigation}){
-    let images= [
+class MakeProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+
+    this.state = {
+      value: "",
+    }
+  }
+
+  handleChangeText(text) {
+    this.setState({ value: text });
+  }
+
+  render() {
+    const { navigation } = this.props;
+    let images = [
       "https://source.unsplash.com/1024x768/?nature",
       "https://source.unsplash.com/1024x768/?water",
       "https://source.unsplash.com/1024x768/?girl", // Network image
     ];
-    const [value, onChangeText] = React.useState('');
+    // const [value, onChangeText] = React.useState('');
     return (
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
-          <Text style={{fontSize: 16, color: '#000', marginTop: '47%', padding: 0,}}>
-            Enter Name Here:
-          </Text>
-          <TextInput
-            style={styles.textInput} 
-            onChangeText={text => onChangeText(text)}
-            value={value}
-          />
-          {/*<EnterTextInput/>*/}
-          <Text style={styles.text}>
-            Scroll along the dots to choose an avatar:
-          </Text>
-          <SliderBox 
-              images= {images}
-              //onCurrentImagePressed={index => handlePress(index)}
-              dotColor="#FFEE58"
-              sliderBoxHeight = {200}
-              inactiveDotColor="#90A4EA"
-              circleLoop
-              resizeMethod={'resize'}
-              resizeMode={'cover'}
-              dotStyle = { {width: 15, height: 15, marginBottom: 390} }
-              ImageComponentStyle ={ {width: 225, height: 225, borderRadius: 225, marginTop: 75} }
-          />
-          <View style={styles.button}>
-            <Text>
-                Changes can be made later.
+        <Text style={{ fontSize: 16, color: '#000', marginTop: '47%', padding: 0, }}>
+          Enter Name Here:
             </Text>
-            <Button
-              title="Next"
-              onPress={
-                () => {
-                  SaveUserId(value);
-                  navigation.navigate('TaskScreen');
-                }
+        <TextInput
+          style={styles.textInput}
+          onChangeText={(text) => this.handleChangeText(text)}
+          value={this.state.value}
+        />
+        {/*<EnterTextInput/>*/}
+        <Text style={styles.text}>
+          Scroll along the dots to choose an avatar:
+            </Text>
+        <SliderBox
+          images={images}
+          //onCurrentImagePressed={index => handlePress(index)}
+          dotColor="#FFEE58"
+          sliderBoxHeight={200}
+          inactiveDotColor="#90A4EA"
+          circleLoop
+          resizeMethod={'resize'}
+          resizeMode={'cover'}
+          dotStyle={{ width: 15, height: 15, marginBottom: 390 }}
+          ImageComponentStyle={{ width: 225, height: 225, borderRadius: 225, marginTop: 75 }}
+        />
+        <View style={styles.button}>
+          <Text>
+            Changes can be made later.
+              </Text>
+          <Button
+            title="Next"
+            onPress={
+              () => {
+                SaveUserId(this.state.value);
+                GetUserId();
+                navigation.navigate('TaskScreen');
               }
-            />
-          </View>         
+            }
+          />
+        </View>
       </ImageBackground>
-        
-    )  
+    );
+  }
 };
 
 
