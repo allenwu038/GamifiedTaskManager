@@ -62,5 +62,11 @@ npm install @react-navigation/material-top-tabs
 npm install @react-navigation/devtools
 ```
 
+### Progress Bar
+```
+npm install react-native-progress --save
+npm install @react-native-community/art --save
+```
+
 ### Storage
 `yarn add @react-native-community/async-storage`
