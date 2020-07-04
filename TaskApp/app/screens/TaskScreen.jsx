@@ -82,16 +82,14 @@ function TaskScreen() {
   });
   
   return (
-    
-    <>
+    <View>
       <ImageBackground
         source={backgroundImg}
-        style={{ width: "100%" }}
-      /> 
-      {/* passing prop of todos */}
-      {/* <TodoList todos={todos} toggleTodo={toggleTodo} /> */}
+        style={{ width: "100%" }} />
+      {/* /* passing prop of todos */
+      /* <TodoList todos={todos} toggleTodo={toggleTodo} /> */
 
-      {/* <TextInput
+      /* <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={(text) => onChangeText(text)}
         value={value}
@@ -109,10 +107,14 @@ function TaskScreen() {
           borderBottomColor: "#555",
           marginTop: 70,
         }}
-      /> */}
-      {/* <Button title={"Add Task"} onPress={handleAddTodo} /> */}
-      {/* <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} /> */}
-      {GetUserId()}     
+      /> */
+      /* <Button title={"Add Task"} onPress={handleAddTodo} /> */
+      /* <Button title={"Clear Completed Tasks"} onPress={handleClearTodos} /> */}
+      
+      {/* <Text>
+        GetUserId();
+      </Text> */}
+
       <View>
         <Text styles={{fontSize: 300, position: "absolute", color: "black"}}>
           {userId}
@@ -123,7 +125,7 @@ function TaskScreen() {
         </Text> */}
         
       </View>
-    </>
+    </View>
   );
 } 
 
