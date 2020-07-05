@@ -31,7 +31,7 @@ const TaskList = () => {
       id: uuid(),
       text: "Here is a super long piece of text to exceed the text container",
       completed: false,
-    }
+    },
   ]);
 
   // Flag true if user is currently editing an item
@@ -102,18 +102,32 @@ const TaskList = () => {
       (checkedItem) => checkedItem.id === id
     );
     isChecked.length
-      ? // remove item from unchecked items state (check)
-        checkedItemChange((prevItems) => {
-          return [...prevItems.filter((item) => item.id !== id)];
-        })
+      ? // Add item to unchecked items state
+      addItemToUnchecked(id, text)
       : // Add item to checked items state
-        checkedItemChange((prevItems) => {
-          // this.setState({checked: !this.state.checked})
-          return [...prevItems.filter((item) => item.id !== id), { id, text }];
-        });
+      addItemToChecked(id, text);
   };
 
-  const itemUnChecked = (id, text) => {
+  const addItemToChecked = (id, text) => {
+   /*  setItems((prevItems) => {
+      return [...prevItems.filter((item) => item.id !== id), { id, text }];
+    }); */
+    checkedItemChange((prevItems) => {
+      // this.setState({checked: !this.state.checked})
+      return [...prevItems.filter((item) => item.id !== id), { id, text }];
+    });  
+  };
+
+  const addItemToUnchecked = (id, text) => {
+    /* setItems((prevItems) => {
+      return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
+    }); */
+    checkedItemChange((prevItems) => {
+      return [...prevItems.filter((item) => item.id !== id)];
+    });  
+  };
+
+  const itemUnchecked = (id, text) => {
     const isChecked = checkedItems.filter(
       (checkedItem) => checkedItem.id === id
     );
@@ -127,6 +141,18 @@ const TaskList = () => {
           return [...prevItems.filter((item) => item.id === id), { id, text }];
         });
   };
+
+/*   const itemCheckedMove = (id, text) => {
+    setItems((prevItems) => {
+      return [...prevItems.filter((item) => item.id !== id), { id, text }];
+    });
+  };
+
+  const itemUncheckedMove = (id, text) => {
+    setItems((prevItems) => {
+      return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
+    });
+  }; */
 
   return (
     <View style={styles.container}>
@@ -145,7 +171,7 @@ const TaskList = () => {
             handleEditChange={handleEditChange}
             checkedItems={checkedItems}
             itemChecked={itemChecked}
-            itemUnChecked={itemUnChecked}
+            itemUnchecked={itemUnchecked}
           />
         )}
       />
@@ -156,7 +182,7 @@ const TaskList = () => {
 const styles = StyleSheet.create({
   container: {
     height: "100%",
-    flex: 1
+    flex: 1,
   },
 });
 

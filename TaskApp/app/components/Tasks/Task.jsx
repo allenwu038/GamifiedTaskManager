@@ -18,7 +18,7 @@ const Task = ({
   saveEditItem,
   handleEditChange,
   itemChecked,
-  itemUnChecked,
+  itemUnchecked,
   checkedItems,
 }) => {
   const checked = checkedItems.filter(
@@ -35,7 +35,7 @@ const Task = ({
             color="grey"
             onPress={() => {
               item.completed = false;
-              itemUnChecked(item.id, item.text);
+              itemUnchecked(item.id, item.text);
             }}
           />
         ) : (
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     borderColor: "#eee",
     flexShrink: 0,
     flexWrap: "nowrap",
-    flexDirection: "row"
+    flexDirection: "row",
   },
   listItemContainer: {
     flex: 13,
@@ -113,9 +113,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textDecorationLine: "line-through",
     color: "grey",
+    paddingLeft: 15,
   },
   iconView: {
-    justifyContent: 'space-evenly',
+    justifyContent: "space-evenly",
     //color: "grey",
     flex: 1,
   },
