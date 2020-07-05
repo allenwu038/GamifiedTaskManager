@@ -13,6 +13,7 @@ import QuestScreen from "../screens/QuestScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import TabBarIcon from "../components/TabBarIcon";
 import TaskScreen from "../screens/TaskScreen";
+import TaskList from "../components/Tasks/TaskList";
 import TopNav from "./TopNav";
 import { useIsFocused } from "@react-navigation/native";
 
@@ -30,7 +31,7 @@ export default function BottomTabNavigator({ navigation, route }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <TopNav navigation = {navigation}/>
+      <TopNav navigation={navigation} />
 
       <BottomTab.Navigator
         initialRouteName={INITIAL_ROUTE_NAME}
@@ -63,7 +64,7 @@ export default function BottomTabNavigator({ navigation, route }) {
 
         <BottomTab.Screen
           name="Tasks"
-          component={TaskScreen}
+          component={TaskList}
           options={{
             tabBarIcon: ({ color, focused, size }) => (
               <MaterialCommunityIcons
