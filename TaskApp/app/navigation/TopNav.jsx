@@ -2,7 +2,7 @@ import * as React from "react";
 import { StyleSheet, SafeAreaView, View } from "react-native";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import MaterialCommunityIcon from "react-native-vector-icons/MaterialCommunityIcons";
-//import * as Progress from 'react-native-progress';
+import * as Progress from 'react-native-progress';
 
 import CharacterScreen from "../screens/CharacterScreen";
 import SettingsScreen from "../screens/SettingsScreen";

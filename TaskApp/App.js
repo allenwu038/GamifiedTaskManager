@@ -20,7 +20,7 @@ import QuestScreen from "./app/screens/QuestScreen";
 
 // ASYNC STORAGE
 import GetUserId from "./app/util/GetUser.jsx";
-//import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-community/async-storage";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -39,10 +39,10 @@ export default function App() {
               headerShown: false,
             }}
           >
-            {/* <Stack.Screen name="BotNav" component={BottomTabNavigator} /> */}
-            {/* <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} /> */}
-            { <Stack.Screen name="QuestScreen" component={QuestScreen} /> }
+            { <Stack.Screen name="BotNav" component={BottomTabNavigator} /> }
+            { <Stack.Screen name="LoginScreen" component={LoginScreen} /> }
+            { <Stack.Screen name="MakeProfile" component={MakeProfile} /> }
+            {/* { <Stack.Screen name="QuestScreen" component={QuestScreen} /> } */}
 
           </Stack.Navigator>
         </NavigationContainer>
