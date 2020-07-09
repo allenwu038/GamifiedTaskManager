@@ -7,17 +7,19 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ImageBackground,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { MonoText } from "../components/StyledText";
 import LevelList from "../components/levels/LevelList.jsx";
+import levelsBackground from '../assets/images/homescreenBackground.jpg';
 
 export default function QuestScreen() {
   return (
-    <View>
-      <LevelList/>
-    </View>
+    <ImageBackground source={levelsBackground} style={styles.backgroundContainer}>
+        <LevelList/>
+    </ImageBackground>
   );
 }
 
@@ -26,4 +28,10 @@ QuestScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
+  backgroundContainer: {
+    width: null,
+    height: null,
+    //justifyContent: 'center',
+    //alignItems: 'center', 
+  },
 });

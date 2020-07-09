@@ -13,7 +13,7 @@ export default function Passed() {
             name="check-circle"
             size={35}
             color="#008000"
-            style = {{marginLeft: '45%', padding:10}}
+            style = {{padding:10, flex: 1}}
         />
     )
 }
