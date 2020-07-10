@@ -12,11 +12,6 @@ TaskApp/.expo/*
 TaskApp/.expo/packager-info.json
 TaskApp/.expo-shared
 
-# NPM .json / .lock
-TaskApp/package.json
-TaskApp/package-lock.json
-TaskApp/yarn.lock
-
 # Logs
 *.log
 
