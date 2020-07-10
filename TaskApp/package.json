@@ -15,6 +15,7 @@
     "@expo/vector-icons": "~10.2.0",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/async-storage": "^1.11.0",
+    "@react-native-community/cli": "^4.10.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.3.1",
     "@react-navigation/devtools": "^5.1.1",
@@ -32,7 +33,7 @@
     "expo-web-browser": "~8.3.1",
     "react": "^16.13.1",
     "react-devtools": "^4.8.1",
-    "react-dom": "~16.13.1",
+    "react-dom": "^16.13.1",
     "react-native": "^0.63.0",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-image-slider-box": "^1.0.12",
@@ -44,7 +45,7 @@
     "react-native-screens": "~2.9.0",
     "react-native-tab-view": "^2.14.4",
     "react-native-vector-icons": "^7.0.0",
-    "react-native-web": "~0.13.3",
+    "react-native-web": "0.11.7",
     "react-refresh": "^0.8.3",
     "react-router-dom": "^5.2.0",
     "refresh": "^1.0.1",
@@ -56,5 +57,6 @@
     "babel-preset-expo": "~8.2.3",
     "jest-expo": "^38.0.2"
   },
-  "private": true
+  "private": true,
+  "version": "0.0.0"
 }
