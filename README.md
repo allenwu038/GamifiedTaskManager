@@ -29,11 +29,11 @@ To work on this project, you'll want to have a local working copy of the reposit
 
 4. Next, we want to open the app folder in terminal. Open an integrated terminal by using the menu bar and navigating to _Terminal > New Terminal_. You should currently be in the _GamifiedTaskManager_ folder. Change to the TaskApp directory using `cd TaskApp`.
 
-5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. While in the _TaskApp_ directory, run the command in terminal `npm install`.
+5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher and the Yarn package manager. While in the _TaskApp_ directory, run the command in terminal `yarn install`.
 
 6. Now there should be a folder named _node_modules_ inside the _TaskApp_ directory. In the file explorer, make sure that the folder is greyed out. If so, then Git will ignore it. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
 
-7. Now to double check that everything works as expected. In terminal (still in the _TaskApp_ directory), run the command `npm start` OR `expo start`. This should open Metro Bundler in a browser window at localhost:19002. There should be several options to run your code on the left side of the screen.
+7. Now to double check that everything works as expected. In terminal (still in the _TaskApp_ directory), run the command `yarn start` OR `expo start`. This should open Metro Bundler in a browser window at localhost:19002. There should be several options to run your code on the left side of the screen.
    - If you select "Run in web browser," a small popup in the bottom right corner will appear to let you know that Bundler is attempting to open in a web page.
      - Note that Bundler will automatically open the app in a new tab.
      - Do not be surprised if this process takes a while. This is because Expo will be using the develop version of the code, so nothing is optimised yet. The production code will be faster.
@@ -58,13 +58,15 @@ Once you have a local develop branch, you always want to push to _"origin/develo
 ### Developer Tools
 
 ```
-npm install @react-navigation/devtools
-npm install -g react-devtools
+yarn add @react-navigation/devtools
+yarn add react-devtools --global
 ```
 
 ### Icons
 
-`npm install react-native-vector-icons`
+```
+yarn add react-native-vector-icons
+```
 
 ### Images
 
@@ -76,20 +78,25 @@ yarn add react-native-interactive-image
 ### Navigation
 
 ```
-npm install react-native-navigator
-npm install @react-navigation/material-top-tabs
+yarn add react-native-navigator
+yarn add @react-navigation/material-top-tabs
 ```
 
 ### Progress Bar
 
 ```
-npm install react-native-progress --save
-npm install @react-native-community/art --save
+yarn add react-native-progress
+yarn add @react-native-community/art
 ```
 
 ### Storage
 
-`yarn add @react-native-community/async-storage`
+```
+yarn add @react-native-community/async-storage
+```
 
 ### Web Build
-`yarn add expo@33.0.0-alpha.web.3`
+```
+yarn add react-refresh
+yarn add expo --global
+```
