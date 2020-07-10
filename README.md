@@ -31,7 +31,7 @@ To work on this project, you'll want to have a local working copy of the reposit
 
 5. Since the filepath to _GamifiedTaskManager_ will be different on individual machines, each developer will need their own copy of the React libraries. Note: this step requires NodeJS 12.0.0 or higher. While in the _TaskApp_ directory, run the command in terminal `npm install`.
 
-6. Now there should be a folder named _node_modules_ and a file called _package-lock.json_ inside the _TaskApp_ directory. In the file explorer, make sure that both of these are greyed out. If so, then Git will ignore them. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
+6. Now there should be a folder named _node_modules_ inside the _TaskApp_ directory. In the file explorer, make sure that the folder is greyed out. If so, then Git will ignore it. Otherwise, add these files' relative paths (found by right clicking on the folder/file) to the .gitignore in _GamifiedTaskManager_.
 
 7. Now to double check that everything works as expected. In terminal (still in the _TaskApp_ directory), run the command `npm start` OR `expo start`. This should open Metro Bundler in a browser window at localhost:19002. There should be several options to run your code on the left side of the screen.
    - If you select "Run in web browser," a small popup in the bottom right corner will appear to let you know that Bundler is attempting to open in a web page.
@@ -52,8 +52,8 @@ Once you have a local develop branch, you always want to push to _"origin/develo
 ### If things are wrong ):
 
 1. Delete node_modules.
-2. Remove package-lock.json
-3. Run `npm install`.
+2. Remove yarn.json
+3. Run `yarn install`.
 
 ### Developer Tools
 
@@ -69,8 +69,8 @@ npm install -g react-devtools
 ### Images
 
 ```
-npm i react-native-image-slider-box
-npm install --save react-native-interactive-image
+yarn add @react-native-community/slider
+yarn add react-native-interactive-image
 ```
 
 ### Navigation
