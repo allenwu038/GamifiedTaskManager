@@ -1,3 +1,6 @@
+# Local .vscode configurations
+.vscode
+
 # React Native Node Modules
 TaskApp/node_modules
 TaskApp/node_modules/**/*
@@ -13,6 +16,9 @@ TaskApp/.expo-shared
 TaskApp/package.json
 TaskApp/package-lock.json
 TaskApp/yarn.lock
+
+# Logs
+*.log
 
 # Web Build
 npm-debug.*
