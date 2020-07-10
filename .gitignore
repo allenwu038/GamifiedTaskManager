@@ -1,12 +1,20 @@
 # React Native Node Modules
 TaskApp/node_modules
 TaskApp/node_modules/**/*
+
+# React Native Expo/Expo-CLI
 TaskApp/expo/*
 TaskApp/.expo
 TaskApp/.expo/*
 TaskApp/.expo/packager-info.json
+TaskApp/.expo-shared
+
+# NPM .json / .lock
 TaskApp/package.json
+TaskApp/package-lock.json
 TaskApp/yarn.lock
+
+# Web Build
 npm-debug.*
 *.jks
 *.p8
@@ -18,9 +26,3 @@ web-build/
 
 # macOS
 .DS_Store
-
-# Kip's Design Iteration Templates
-./IdeateTemplates
-TaskApp/package-lock.json
-TaskApp/package.json
-TaskApp/package.json
