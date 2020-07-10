@@ -99,4 +99,6 @@ yarn add @react-native-community/async-storage
 ```
 yarn add react-refresh
 yarn add expo --global
+yarn add react-native-web
+yarn add react-dom
 ```
