@@ -90,3 +90,6 @@ npm install @react-native-community/art --save
 ### Storage
 
 `yarn add @react-native-community/async-storage`
+
+### Web Build
+`yarn add expo@33.0.0-alpha.web.3`
