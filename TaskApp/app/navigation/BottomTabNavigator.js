@@ -5,6 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
+import HabitScreen from "../screens/HabitScreen";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -35,7 +36,7 @@ export default function BottomTabNavigator({ navigation, route }) {
 
       <BottomTab.Navigator
         initialRouteName={INITIAL_ROUTE_NAME}
-        swipeEnabled={true}
+        swipeEnabled={false}
         tabBarOptions={{
           // activeBackgroundColor: "black"
           activeTintColor: Colors.navActive,
@@ -49,7 +50,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       >
         <BottomTab.Screen
           name="Habits"
-          component={CharacterScreen}
+          component={HabitScreen}
           options={{
             tabBarIcon: ({ color, focused, size }) => (
               <MaterialCommunityIcons
