@@ -4,17 +4,29 @@ import {
   Image,
   Platform,
   StyleSheet,
+  SafeAreaView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { MonoText } from "../components/StyledText";
 
-export default function CharacterScreen() {
+export default function CharacterScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <SafeAreaView>
+        <Icon
+          name="chevron-double-left"
+          style={styles.iconView}
+          size={40}
+          color="grey"
+          onPress={() => navigation.goBack()}
+        />
+      </SafeAreaView>
+
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
