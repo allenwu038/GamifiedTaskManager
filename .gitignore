@@ -5,6 +5,9 @@
 TaskApp/node_modules
 TaskApp/node_modules/**/*
 
+node_modules
+node_modules/.yarn-integrity
+
 # React Native Expo/Expo-CLI
 TaskApp/expo/*
 TaskApp/.expo
@@ -30,5 +33,4 @@ web-build/
 
 # Yarn things
 yargs
-
-node_modules
+node_modules/.yarn-integrity
