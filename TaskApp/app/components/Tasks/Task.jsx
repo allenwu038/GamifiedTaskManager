@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
+  Pressable,
   TextInput,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -21,14 +21,14 @@ const Task = ({
   itemUnchecked,
 }) => {
   return (
-    <TouchableOpacity style={styles.listItem}>
+    <Pressable style={styles.listItem}>
       <View style={styles.iconView}>
         {item.completed ? (
           <Icon
             name="check-circle"
             style={styles.iconView}
             size={25}
-            color="grey"
+            color={Colors.iconColor}
             onPress={() => {
               item.completed = false;
               itemUnchecked(item.id, item.text);
@@ -39,7 +39,7 @@ const Task = ({
             name="circle"
             style={styles.iconView}
             size={25}
-            color="grey"
+            color={Colors.iconColor}
             onPress={() => {
               item.completed = true;
               itemChecked(item.id, item.text);
@@ -58,7 +58,7 @@ const Task = ({
             />
           ) : (
             <Text
-              onPress={() => editItem(item.id, item.text, item.completed)}
+              onPress={() => editItem(item.id, item.text, item.completed)}  
               style={
                 item.completed ? styles.checkedItemText : styles.listItemText
               }
@@ -80,16 +80,16 @@ const Task = ({
           }}
         />
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   listItem: {
     padding: 15,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: Colors.taskBackground,
     borderBottomWidth: 1,
-    borderColor: "#eee",
+    borderColor: Colors.taskBorder,
     flexShrink: 0,
     flexWrap: "nowrap",
     flexDirection: "row",
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
   },
   iconView: {
     justifyContent: "space-evenly",
-    //color: "grey",
     flex: 1,
   },
   editItemInput: {
