@@ -6,8 +6,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import HabitScreen from "../screens/HabitScreen";
-import HomeScreen from "../screens/HomeScreen";
-import LinksScreen from "../screens/LinksScreen";
 import LoginScreen from "../screens/LoginScreen";
 import CharacterScreen from "../screens/CharacterScreen";
 import QuestScreen from "../screens/QuestScreen";
