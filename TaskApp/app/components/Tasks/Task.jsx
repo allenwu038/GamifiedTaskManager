@@ -19,11 +19,7 @@ const Task = ({
   handleEditChange,
   itemChecked,
   itemUnchecked,
-  checkedItems,
 }) => {
-  const checked = checkedItems.filter(
-    (checkedItem) => checkedItem.id === item.id
-  );
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.iconView}>
@@ -62,7 +58,7 @@ const Task = ({
             />
           ) : (
             <Text
-              onPress={() => itemChecked(item.id, item.text)}
+              onPress={() => editItem(item.id, item.text)}
               style={
                 item.completed ? styles.checkedItemText : styles.listItemText
               }
