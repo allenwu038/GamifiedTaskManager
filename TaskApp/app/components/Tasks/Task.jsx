@@ -58,7 +58,7 @@ const Task = ({
             />
           ) : (
             <Text
-              onPress={() => editItem(item.id, item.text)}
+              onPress={() => editItem(item.id, item.text, item.completed)}
               style={
                 item.completed ? styles.checkedItemText : styles.listItemText
               }
