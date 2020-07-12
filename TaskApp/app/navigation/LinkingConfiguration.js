@@ -6,8 +6,10 @@ export default {
     Root: {
       path: 'root',
       screens: {
-        Home: 'home',
-        Links: 'links',
+        Character: "character",
+        Quests: "quests",
+        Settings: "settings",
+        Tasks: "tasks",
       },
     },
   },
