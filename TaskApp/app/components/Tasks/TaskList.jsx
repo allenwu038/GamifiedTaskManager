@@ -41,16 +41,9 @@ const TaskList = () => {
   const [editItemDetail, editItemDetailChange] = useState({
     id: null,
     text: null,
-<<<<<<< HEAD
-  });
-
-  const [checkedItems, checkedItemChange] = useState([]);
-
-=======
     completed: false,
   });
 
->>>>>>> rebuild-env
   const deleteItem = (id) => {
     setItems((prevItems) => {
       return prevItems.filter((item) => item.id !== id);
