@@ -9,7 +9,7 @@ import {
   Button
 } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
-import logo from '../assets/images/blackbox.png';
+// import logo from '../assets/images/blackbox.png';
 import MakeProfile from './MakeProfile';
 
 export default function LoginScreen({ navigation }) {
@@ -22,7 +22,7 @@ export default function LoginScreen({ navigation }) {
         />
       </ImageBackground>
     )
-  };
+};
 
 const styles = StyleSheet.create ({
   backgroundContainer: {

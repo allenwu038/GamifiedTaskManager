@@ -10,7 +10,7 @@ import SettingsScreen from "../screens/SettingsScreen";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 
-export default function TopNav({navigation, route}) {
+export default function TopNav({navigation}) {
   return (
     <SafeAreaView style = {styles.container}>
       <View style = {styles.characterIcon}>

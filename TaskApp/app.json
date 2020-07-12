@@ -2,11 +2,10 @@
   "expo": {
     "name": "TaskApp",
     "slug": "TaskApp",
-    "platforms": ["ios", "android", "web"],
+    "platforms": ["ios", "web"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/images/icon.png",
-    "scheme": "myapp",
     "splash": {
       "image": "./app/assets/images/splash.png",
       "resizeMode": "contain",
@@ -15,7 +14,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },

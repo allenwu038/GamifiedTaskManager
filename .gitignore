@@ -30,3 +30,5 @@ web-build/
 
 # Yarn things
 yargs
+
+node_modules

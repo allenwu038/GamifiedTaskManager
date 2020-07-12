@@ -41,10 +41,16 @@ const TaskList = () => {
   const [editItemDetail, editItemDetailChange] = useState({
     id: null,
     text: null,
+<<<<<<< HEAD
   });
 
   const [checkedItems, checkedItemChange] = useState([]);
 
+=======
+    completed: false,
+  });
+
+>>>>>>> rebuild-env
   const deleteItem = (id) => {
     setItems((prevItems) => {
       return prevItems.filter((item) => item.id !== id);
@@ -55,7 +61,7 @@ const TaskList = () => {
   const saveEditItem = (id, text) => {
     setItems((prevItems) => {
       return prevItems.map((item) =>
-        item.id === editItemDetail.id ? { id, text: editItemDetail.text } : item
+        item.id === editItemDetail.id ? { id, text: editItemDetail.text, completed } : item
       );
     });
     // Flip edit status back to false
@@ -64,7 +70,7 @@ const TaskList = () => {
 
   // Event handler to capture users text input as they edit an item
   const handleEditChange = (text) => {
-    editItemDetailChange({ id: editItemDetail.id, text });
+    editItemDetailChange({ id: editItemDetail.id, text, completed });
   };
 
   const addItem = (text) => {
@@ -88,7 +94,7 @@ const TaskList = () => {
   };
 
   // capture old items ID and text when user clicks edit
-  const editItem = (id, text) => {
+  const editItem = (id, text, completed) => {
     editItemDetailChange({
       id,
       text,
@@ -98,61 +104,34 @@ const TaskList = () => {
   };
 
   const itemChecked = (id, text) => {
-    const isChecked = checkedItems.filter(
-      (checkedItem) => checkedItem.id === id
+    const isChecked = items.filter(
+      (checkedItem) => items.id === id
     );
     isChecked.length
-      ? // Add item to unchecked items state
-      addItemToUnchecked(id, text)
-      : // Add item to checked items state
-      addItemToChecked(id, text);
-  };
-
-  const addItemToChecked = (id, text) => {
-   /*  setItems((prevItems) => {
-      return [...prevItems.filter((item) => item.id !== id), { id, text }];
-    }); */
-    checkedItemChange((prevItems) => {
-      // this.setState({checked: !this.state.checked})
-      return [...prevItems.filter((item) => item.id !== id), { id, text }];
-    });  
-  };
-
-  const addItemToUnchecked = (id, text) => {
-    /* setItems((prevItems) => {
-      return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
-    }); */
-    checkedItemChange((prevItems) => {
-      return [...prevItems.filter((item) => item.id !== id)];
-    });  
+      ? // Add checked items to bottom
+      setItems((prevItems) => {
+        return [...prevItems.filter((item) => item.id !== id), { id, text }];
+      })
+      : // Add unchecked items to top
+      setItems((prevItems) => {
+        return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
+      })
   };
 
   const itemUnchecked = (id, text) => {
-    const isChecked = checkedItems.filter(
-      (checkedItem) => checkedItem.id === id
+    const isChecked = items.filter(
+      (checkedItem) => items.id === id
     );
     isChecked.length
-      ? // remove item from checked items state (uncheck)
-        checkedItemChange((prevItems) => {
-          return [...prevItems.filter((item) => item.id === id)];
-        })
-      : // Add item to unchecked items state
-        checkedItemChange((prevItems) => {
-          return [...prevItems.filter((item) => item.id === id), { id, text }];
-        });
+      ? // Add unchecked items to top
+      setItems((prevItems) => {
+        return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
+      })
+      : // Add checked items to bottom
+      setItems((prevItems) => {
+        return [...prevItems.filter((item) => item.id !== id), { id, text }];
+      })
   };
-
-/*   const itemCheckedMove = (id, text) => {
-    setItems((prevItems) => {
-      return [...prevItems.filter((item) => item.id !== id), { id, text }];
-    });
-  };
-
-  const itemUncheckedMove = (id, text) => {
-    setItems((prevItems) => {
-      return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
-    });
-  }; */
 
   return (
     <View style={styles.container}>
@@ -169,7 +148,6 @@ const TaskList = () => {
             editItemDetail={editItemDetail}
             saveEditItem={saveEditItem}
             handleEditChange={handleEditChange}
-            checkedItems={checkedItems}
             itemChecked={itemChecked}
             itemUnchecked={itemUnchecked}
           />

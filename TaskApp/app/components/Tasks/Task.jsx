@@ -3,8 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
   TextInput,
+  TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Colors from "../../constants/Colors";
@@ -19,11 +19,7 @@ const Task = ({
   handleEditChange,
   itemChecked,
   itemUnchecked,
-  checkedItems,
 }) => {
-  const checked = checkedItems.filter(
-    (checkedItem) => checkedItem.id === item.id
-  );
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.iconView}>
@@ -32,24 +28,24 @@ const Task = ({
             name="check-circle"
             style={styles.iconView}
             size={25}
-            color="grey"
+            color={Colors.iconColor}
             onPress={() => {
               item.completed = false;
               itemUnchecked(item.id, item.text);
             }}
           />
         ) : (
-          <Icon
-            name="circle"
-            style={styles.iconView}
-            size={25}
-            color="grey"
-            onPress={() => {
-              item.completed = true;
-              itemChecked(item.id, item.text);
-            }}
-          />
-        )}
+            <Icon
+              name="circle"
+              style={styles.iconView}
+              size={25}
+              color={Colors.iconColor}
+              onPress={() => {
+                item.completed = true;
+                itemChecked(item.id, item.text);
+              }}
+            />
+          )}
       </View>
 
       <View style={styles.listItemContainer}>
@@ -61,15 +57,15 @@ const Task = ({
               onChangeText={handleEditChange}
             />
           ) : (
-            <Text
-              onPress={() => itemChecked(item.id, item.text)}
-              style={
-                item.completed ? styles.checkedItemText : styles.listItemText
-              }
-            >
-              {item.text}
-            </Text>
-          )}
+              <Text
+                onPress={() => editItem(item.id, item.text, item.completed)}
+                style={
+                  item.completed ? styles.checkedItemText : styles.listItemText
+                }
+              >
+                {item.text}
+              </Text>
+            )}
         </View>
       </View>
 
@@ -91,9 +87,9 @@ const Task = ({
 const styles = StyleSheet.create({
   listItem: {
     padding: 15,
-    backgroundColor: "#f8f8f8",
+    backgroundColor: Colors.taskBackground,
     borderBottomWidth: 1,
-    borderColor: "#eee",
+    borderColor: Colors.taskBorder,
     flexShrink: 0,
     flexWrap: "nowrap",
     flexDirection: "row",
@@ -117,7 +113,6 @@ const styles = StyleSheet.create({
   },
   iconView: {
     justifyContent: "space-evenly",
-    //color: "grey",
     flex: 1,
   },
   editItemInput: {
