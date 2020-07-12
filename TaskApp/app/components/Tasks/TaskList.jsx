@@ -87,7 +87,7 @@ const TaskList = () => {
   };
 
   // capture old items ID and text when user clicks edit
-  const editItem = (id, text) => {
+  const editItem = (id, text, completed) => {
     editItemDetailChange({
       id,
       text,
