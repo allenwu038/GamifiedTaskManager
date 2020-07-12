@@ -81,7 +81,7 @@ const TaskList = () => {
       );
     } else {
       setItems((prevItems) => {
-        return [{ id: uuid(), text }, ...prevItems];
+        return [{ id: uuid(), text, completed }, ...prevItems];
       });
     }
   };

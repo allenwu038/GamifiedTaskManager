@@ -35,17 +35,17 @@ const Task = ({
             }}
           />
         ) : (
-            <Icon
-              name="circle"
-              style={styles.iconView}
-              size={25}
-              color={Colors.iconColor}
-              onPress={() => {
-                item.completed = true;
-                itemChecked(item.id, item.text);
-              }}
-            />
-          )}
+          <Icon
+            name="circle"
+            style={styles.iconView}
+            size={25}
+            color={Colors.iconColor}
+            onPress={() => {
+              item.completed = true;
+              itemChecked(item.id, item.text);
+            }}
+          />
+        )}
       </View>
 
       <View style={styles.listItemContainer}>
@@ -57,15 +57,15 @@ const Task = ({
               onChangeText={handleEditChange}
             />
           ) : (
-              <Text
-                onPress={() => editItem(item.id, item.text, item.completed)}
-                style={
-                  item.completed ? styles.checkedItemText : styles.listItemText
-                }
-              >
-                {item.text}
-              </Text>
-            )}
+            <Text
+              onPress={() => editItem(item.id, item.text, item.completed)}  
+              style={
+                item.completed ? styles.checkedItemText : styles.listItemText
+              }
+            >
+              {item.text}
+            </Text>
+          )}
         </View>
       </View>
 

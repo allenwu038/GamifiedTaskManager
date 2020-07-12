@@ -34,7 +34,7 @@ export default function BottomTabNavigator({ navigation, route }) {
 
       <BottomTab.Navigator
         initialRouteName={INITIAL_ROUTE_NAME}
-        swipeEnabled={true}
+        swipeEnabled={false}
         tabBarOptions={{
           // activeBackgroundColor: "black"
           activeTintColor: Colors.navActive,
