@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   ImageBackground,
+  SectionList
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -15,13 +16,45 @@ import { MonoText } from "../components/StyledText";
 import LevelList from "../components/levels/LevelList.jsx";
 import levelsBackground from '../assets/images/homescreenBackground.jpg';
 
+let offset = 0;
+let message = "direction";
+// let curChapter = 1;
+let maxChapter = 5;
+let totalPassed = 14;
+
+let chapters = [];
+for (let i = 1; i <= maxChapter; i++) {
+    let passedCount = totalPassed - 9*(i-1) + 1;
+    let passed = passedCount >= 10 ? 10 : (passedCount < 0 ? 0 : passedCount);
+    chapters.push(
+        {
+            currentStage: passed,
+            chapter: i
+        }
+    );
+} 
+
 export default function QuestScreen() {
   return (
     <ImageBackground source={levelsBackground} style={styles.backgroundContainer}>
-        <LevelList/>
+      <ScrollView>
+        {chapters.map( element => LevelList(element.currentStage, element.chapter))}
+      </ScrollView>
+      <View style={styles.padding}>
+      </View>
     </ImageBackground>
-  );
-}
+  )
+};
+
+// var onScroll = event => {
+//   var currentOffset = event.nativeEvent.contentOffset.y;
+//   var direction = currentOffset > offset ? 'down' : 'up';
+//   offset = currentOffset;
+//   alert(direction);
+//   return (
+//       direction == 'down' ? "down" : "up"
+//   );
+// };
 
 QuestScreen.navigationOptions = {
   header: null,
@@ -30,8 +63,12 @@ QuestScreen.navigationOptions = {
 const styles = StyleSheet.create({
   backgroundContainer: {
     width: null,
-    height: null,
+    height: 800,
     //justifyContent: 'center',
     //alignItems: 'center', 
   },
+  padding: {
+    height: 25
+  }
 });
+
