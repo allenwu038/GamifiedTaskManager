@@ -52,8 +52,7 @@ Once you have a local develop branch, you always want to push to _"origin/develo
 ### If things are wrong ):
 
 1. Delete node_modules.
-2. Remove yarn.json
-3. Run `yarn install`.
+2. Run `yarn install`.
 
 ### Developer Tools
 
