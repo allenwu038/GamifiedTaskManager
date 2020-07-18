@@ -19,32 +19,34 @@ const Task = ({
   handleEditChange,
   itemChecked,
   itemUnchecked,
-  checkedItems,
+  // checkedItems,
 }) => {
-  const checked = checkedItems.filter(
+  /* const checked = checkedItems.filter(
     checkedItem => checkedItem.id === item.id,
-  );
+  ); */
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.iconView}>
-        {checkedItems.id === item.id ? (
+        {item.completed ? (
           <Icon
             name="check-circle"
             style={styles.iconView}
-            size={30}
+            size={28.5}
             color={Colors.iconColor}
             onPress={() => {
-              itemUnchecked(item.id, item.text)
+              item.completed = false;
+              itemUnchecked(item.id, item.text, item.completed);
             }}
           />
         ) : (
           <Icon
             name="circle"
             style={styles.iconView}
-            size={30}
+            size={28.5}
             color={Colors.iconColor}
             onPress={() => {
-              itemChecked(item.id, item.text)   
+              item.completed = true;
+              itemChecked(item.id, item.text, item.completed);  
             }}
           />
         )}
@@ -60,10 +62,9 @@ const Task = ({
             />
           ) : (
             <Text
-              onPress={() => editItem(item.id, item.text)}
-              // maybe can call saveEditItem here ??
+              onPress={() => editItem(item.id, item.text, item.completed)}
               style={
-                checkedItems.id === item.id ? styles.checkedItemText : styles.listItemText
+                item.completed? styles.checkedItemText : styles.listItemText
               }
               >
               {item.text}
@@ -72,17 +73,21 @@ const Task = ({
           </View>
         </View>
 
-      <View style={styles.iconView}>
+      <View style={styles.saveIconView}>
         {isEditing && editItemDetail.id === item.id ? (
           <Icon
-            name="save"
+            name="thumbs-up"
             size={20}
-            color="green"
-            onPress={() => saveEditItem(item.id, item.text)}
+            color={Colors.addItemBackground}
+            onPress={() => saveEditItem(item.id, item.text, item.completed)}
           />
         ) : (
-          !checked.length
-        )}
+          null
+          )
+       }
+      </View>
+      
+      <View style={styles.IconView}>
         <Icon
           name="remove"
           style={styles.iconView}
@@ -114,21 +119,26 @@ const styles = StyleSheet.create({
   listItemText: {
     fontSize: 18,
     alignSelf: "flex-start",
-    paddingLeft: 15,
+    paddingLeft: 20,
   },
   checkedItemText: {
     fontSize: 18,
     textDecorationLine: "line-through",
     color: "grey",
-    paddingLeft: 15,
+    paddingLeft: 20,
   },
   iconView: {
+    justifyContent: "space-evenly",
+    flex: 1,
+  },
+  saveIconView : {
     justifyContent: "space-evenly",
     flex: 1,
   },
   editItemInput: {
     padding: 0,
     fontSize: 18,
+    paddingLeft: 20,
   },
 });
 
