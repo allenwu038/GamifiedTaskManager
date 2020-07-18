@@ -27,73 +27,69 @@ const Task = ({
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.iconView}>
-        {item.completed ? (
+        {checkedItems.id === item.id ? (
           <Icon
             name="check-circle"
             style={styles.iconView}
-            size={25}
+            size={30}
             color={Colors.iconColor}
             onPress={() => {
-              item.completed = false;
-              // itemUnchecked(item.id, item.text);
+              itemUnchecked(item.id, item.text)
             }}
           />
         ) : (
           <Icon
             name="circle"
             style={styles.iconView}
-            size={25}
+            size={30}
             color={Colors.iconColor}
             onPress={() => {
-              item.completed = true;
-              // itemChecked(item.id, item.text);
+              itemChecked(item.id, item.text)   
             }}
           />
         )}
       </View>
-      
-      <View style={styles.listItemView}>
-        {isEditing && editItemDetail.id === item.id ? (
-          <TextInput
-            placeholder="Edit Item..."
-            style={styles.editItemInput}
-            onChangeText={handleEditChange}
-          />
-        ) : (
-          <Text
-            onPress={() => itemChecked(item.id, item.text)}
-            style={
-              checked.length ? styles.checkedItemText : styles.listItemText
-            }>
-            {item.text}
-          </Text>
-        )}
-        <View style={styles.iconView}>
+
+      <View style={styles.listItemContainer}>
+        <View style={styles.listItemView}>
           {isEditing && editItemDetail.id === item.id ? (
-            <Icon
-              name="save"
-              size={20}
-              color="green"
-              onPress={() => saveEditItem(item.id, item.text)}
+            <TextInput
+              placeholder="Edit Item..."
+              style={styles.editItemInput}
+              onChangeText={handleEditChange}
             />
           ) : (
-            !checked.length && (
-              <Icon
-                name="pencil"
-                size={20}
-                color="blue"
-                onPress={() => editItem(item.id, item.text)}
-              />
-            )
+            <Text
+              onPress={() => editItem(item.id, item.text)}
+              // maybe can call saveEditItem here ??
+              style={
+                checkedItems.id === item.id ? styles.checkedItemText : styles.listItemText
+              }
+              >
+              {item.text}
+            </Text>
           )}
-          <Icon
-            name="remove"
-            style={styles.iconView}
-            size={25}
-            color="#fa867e"
-            onPress={() => deleteItem(item.id)}
-          />
+          </View>
         </View>
+
+      <View style={styles.iconView}>
+        {isEditing && editItemDetail.id === item.id ? (
+          <Icon
+            name="save"
+            size={20}
+            color="green"
+            onPress={() => saveEditItem(item.id, item.text)}
+          />
+        ) : (
+          !checked.length
+        )}
+        <Icon
+          name="remove"
+          style={styles.iconView}
+          size={25}
+          color="#fa867e"
+          onPress={() => deleteItem(item.id)}
+        />
       </View>
     </TouchableOpacity>
   );
