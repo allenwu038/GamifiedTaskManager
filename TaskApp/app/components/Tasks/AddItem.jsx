@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Colors from "../../constants/Colors";
 
 const AddItem = ({ addItem }) => {
   const [text, setText] = useState("");
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   btn: {
-    backgroundColor: "#c2bad8",
+    backgroundColor: Colors.addItemBackground,
     padding: 9,
     margin: 5,
     height: 40,

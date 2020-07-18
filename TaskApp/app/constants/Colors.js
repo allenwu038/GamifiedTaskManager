@@ -1,6 +1,7 @@
 const tintColor = '#2f95dc';
 
 export default {
+  addItemBackground: "#c2bad8",
   errorBackground: 'red',
   errorText: '#fff',
   iconColor: "gray",
