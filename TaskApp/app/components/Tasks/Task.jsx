@@ -19,7 +19,11 @@ const Task = ({
   handleEditChange,
   itemChecked,
   itemUnchecked,
+  checkedItems,
 }) => {
+  const checked = checkedItems.filter(
+    checkedItem => checkedItem.id === item.id,
+  );
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.iconView}>
@@ -31,7 +35,7 @@ const Task = ({
             color={Colors.iconColor}
             onPress={() => {
               item.completed = false;
-              itemUnchecked(item.id, item.text);
+              // itemUnchecked(item.id, item.text);
             }}
           />
         ) : (
@@ -42,43 +46,54 @@ const Task = ({
             color={Colors.iconColor}
             onPress={() => {
               item.completed = true;
-              itemChecked(item.id, item.text);
+              // itemChecked(item.id, item.text);
             }}
           />
         )}
       </View>
-
-      <View style={styles.listItemContainer}>
-        <View style={styles.listItemView}>
+      
+      <View style={styles.listItemView}>
+        {isEditing && editItemDetail.id === item.id ? (
+          <TextInput
+            placeholder="Edit Item..."
+            style={styles.editItemInput}
+            onChangeText={handleEditChange}
+          />
+        ) : (
+          <Text
+            onPress={() => itemChecked(item.id, item.text)}
+            style={
+              checked.length ? styles.checkedItemText : styles.listItemText
+            }>
+            {item.text}
+          </Text>
+        )}
+        <View style={styles.iconView}>
           {isEditing && editItemDetail.id === item.id ? (
-            <TextInput
-              placeholder="Edit task"
-              style={styles.editItemInput}
-              onChangeText={handleEditChange}
+            <Icon
+              name="save"
+              size={20}
+              color="green"
+              onPress={() => saveEditItem(item.id, item.text)}
             />
           ) : (
-            <Text
-              onPress={() => editItem(item.id, item.text, item.completed)}  
-              style={
-                item.completed ? styles.checkedItemText : styles.listItemText
-              }
-            >
-              {item.text}
-            </Text>
+            !checked.length && (
+              <Icon
+                name="pencil"
+                size={20}
+                color="blue"
+                onPress={() => editItem(item.id, item.text)}
+              />
+            )
           )}
+          <Icon
+            name="remove"
+            style={styles.iconView}
+            size={25}
+            color="#fa867e"
+            onPress={() => deleteItem(item.id)}
+          />
         </View>
-      </View>
-
-      <View style={styles.iconView}>
-        <Icon
-          name="remove"
-          style={styles.iconView}
-          size={25}
-          color="#fa867e"
-          onPress={() => {
-            deleteItem(item.id);
-          }}
-        />
       </View>
     </TouchableOpacity>
   );

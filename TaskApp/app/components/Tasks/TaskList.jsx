@@ -10,61 +10,57 @@ const TaskList = () => {
     {
       id: uuid(),
       text: "Malk",
-      completed: false,
     },
     {
       id: uuid(),
       text: "Egges",
-      completed: false,
     },
     {
       id: uuid(),
       text: "Breb",
-      completed: false,
     },
     {
       id: uuid(),
       text: "Joose",
-      completed: false,
     },
     {
       id: uuid(),
       text: "Here is a super long piece of text to exceed the text container",
-      completed: false,
     },
   ]);
 
-  // Flag true if user is currently editing an item
-  const [editStatus, editStatusChange] = useState(false);
+   // Flag true if user is currently editing an item
+   const [editStatus, editStatusChange] = useState(false);
 
-  // State to capture information about the item being edited
-  const [editItemDetail, editItemDetailChange] = useState({
-    id: null,
-    text: null,
-    completed: false,
-  });
-
-  const deleteItem = (id) => {
-    setItems((prevItems) => {
-      return prevItems.filter((item) => item.id !== id);
-    });
-  };
-
-  // Submit the users edits to the overall items state
-  const saveEditItem = (id, text) => {
-    setItems((prevItems) => {
-      return prevItems.map((item) =>
-        item.id === editItemDetail.id ? { id, text: editItemDetail.text, completed } : item
-      );
-    });
-    // Flip edit status back to false
-    editStatusChange(!editStatus);
-  };
-
-  // Event handler to capture users text input as they edit an item
-  const handleEditChange = (text) => {
-    editItemDetailChange({ id: editItemDetail.id, text, completed });
-  };
+   // State to capture information about the item being edited
+   const [editItemDetail, editItemDetailChange] = useState({
+     id: null,
+     text: null,
+   });
+ 
+   const [checkedItems, checkedItemChange] = useState([]);
+ 
+   const deleteItem = id => {
+     setItems(prevItems => {
+       return prevItems.filter(item => item.id !== id);
+     });
+   };
+ 
+   // Submit the users edits to the overall items state
+   const saveEditItem = (id, text) => {
+     setItems(prevItems => {
+       return prevItems.map(item =>
+         item.id === editItemDetail.id ? {id, text: editItemDetail.text} : item,
+       );
+     });
+     // Flip edit status back to false
+     editStatusChange(!editStatus);
+   };
+ 
+   // Event handler to capture users text input as they edit an item
+   const handleEditChange = text => {
+     editItemDetailChange({id: editItemDetail.id, text});
+   };
 
   const addItem = (text) => {
     if (!text) {
@@ -86,44 +82,39 @@ const TaskList = () => {
     }
   };
 
-  // capture old items ID and text when user clicks edit
-  const editItem = (id, text, completed) => {
+   // capture old items ID and text when user clicks edit
+   const editItem = (id, text) => {
     editItemDetailChange({
       id,
       text,
-      completed,
     });
     return editStatusChange(!editStatus);
   };
 
   const itemChecked = (id, text) => {
-    const isChecked = items.filter(
-      (checkedItem) => items.id === id
-    );
+    const isChecked = checkedItems.filter(checkedItem => checkedItem.id === id);
     isChecked.length
-      ? // Add checked items to bottom
-      setItems((prevItems) => {
-        return [...prevItems.filter((item) => item.id !== id), { id, text }];
-      })
-      : // Add unchecked items to top
-      setItems((prevItems) => {
-        return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
-      })
+      ? // remove item from checked items state (uncheck)
+        checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id)];
+        })
+      : // Add item to checked items state
+        checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id), {id, text}];
+        });
   };
 
   const itemUnchecked = (id, text) => {
-    const isChecked = items.filter(
-      (checkedItem) => items.id === id
-    );
+    const isChecked = checkedItems.filter(checkedItem => checkedItem.id === id);
     isChecked.length
-      ? // Add unchecked items to top
-      setItems((prevItems) => {
-        return [{ id, text }, ...prevItems.filter((item) => item.id !== id)];
+      ? // remove item from unchecked items state (check)
+        checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id), {id, text}];
       })
-      : // Add checked items to bottom
-      setItems((prevItems) => {
-        return [...prevItems.filter((item) => item.id !== id), { id, text }];
-      })
+      : // Add item to unchecked items state   
+        checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id)];
+        });
   };
 
   return (
@@ -143,6 +134,7 @@ const TaskList = () => {
             handleEditChange={handleEditChange}
             itemChecked={itemChecked}
             itemUnchecked={itemUnchecked}
+            checkedItems={checkedItems}
           />
         )}
       />
@@ -155,6 +147,7 @@ const styles = StyleSheet.create({
     height: "100%",
     flex: 1,
   },
+  
 });
 
 export default TaskList;
