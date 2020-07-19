@@ -5,6 +5,7 @@ import {
     Button, 
     FlatList,
     View,
+    Text
   } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import Passed from "./passed.jsx";
@@ -16,10 +17,10 @@ import HorizontalLevelContainer from "./HorizontalLevelContainer.jsx";
 
 let maxLevel = 9;
 let levelsPerRow = 3;
-let currentLevel = 8;
 let numContainers = maxLevel/levelsPerRow;
 
-export default function LevelList() {
+export default function LevelList(currentLvl, chapter) {
+    let currentLevel = currentLvl;
     let levels = [];
     for (let i = 0; i < maxLevel; i++) {
         let temp = i < currentLevel-1 ? true : false;
@@ -48,6 +49,7 @@ export default function LevelList() {
 
     return (
         <View style = {styles.row}>
+            <Text>Chapter {chapter}</Text>
                 {levelRows.map( levelsPassedThisRow => HorizontalLevelContainer(levelsPerRow, levelsPassedThisRow))}
         </View>
     );
@@ -56,5 +58,8 @@ export default function LevelList() {
 const styles = StyleSheet.create ({
     row: {
         padding: 10,
+    },
+    chapter: {
+        alignContent: "center"
     }
 });

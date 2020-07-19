@@ -12,7 +12,7 @@ export default function Passed() {
         <Icon
             name="check-circle"
             size={35}
-            color="#008000"
+            color='#cc99cc'
             style = {{padding:10, flex: 1}}
         />
     )
