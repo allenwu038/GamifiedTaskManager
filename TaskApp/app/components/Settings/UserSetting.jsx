@@ -9,14 +9,14 @@ import {
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Colors from "../../constants/Colors";
 
-const UserSetting = ({
-  onUIDChange,
-}) => {
+const UserSetting = ({ onUIDChange }) => {
   return (
-    <TouchableOpacity style={styles.settingsItem}>
-        <Text onPress={() => onUIDChange()}>
-          Change username
-        </Text>
+    <TouchableOpacity
+      style={styles.settingsItem}
+      onPress={() => onUIDChange()}>
+      <Text>
+        Change username
+      </Text>
     </TouchableOpacity>
   );
 };
