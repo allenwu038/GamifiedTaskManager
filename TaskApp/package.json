@@ -18,6 +18,7 @@
     "expo": "^38.0.8",
     "expo-status-bar": "^1.0.2",
     "expo-web-browser": "~8.3.1",
+    "libmoji": "^2.3.0",
     "react": "~16.11.0",
     "react-devtools": "^4.8.1",
     "react-dom": "^16.13.1",
