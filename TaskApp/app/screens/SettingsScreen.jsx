@@ -5,6 +5,8 @@ import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import UserSetting from "../components/Settings/UserSetting";
+import SaveUser from "../util/SaveUser";
+import GetUser from "../util/GetUser";
 
 export default function SettingsScreen({ navigation }) {
   return (
@@ -34,15 +36,15 @@ SettingsScreen.navigationOptions = {
 };
 
 function handleUIDChange() {
-  return Alert.alert("Change username", "Input your new username", [
+  return Alert.prompt("Change username", "Input your new username", [
     {
       text: "Cancel",
       onPress: () => console.log("Cancel Pressed"),
-      // style: 'cancel'
+      style: 'cancel'
     },
     {
       text: "Save",
-      onPress: () => console.log("Install Pressed"),
+      onPress: (newUser) => SaveUser(newUser),
     },
   ]);
 }
