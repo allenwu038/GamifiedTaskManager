@@ -31,7 +31,11 @@ function showAlert(navigation) {
         [
             {
               text: 'unlock new outfit',
-              onPress: () => navigation.navigate("CharacterScreen")
+              onPress: () => navigate('CharacterScreen')
+            },
+            {
+                text: 'ok',  
+                onPress: () => navigation.navigate('CharacterScreen')
             }
         ],
         { cancelable: false }
