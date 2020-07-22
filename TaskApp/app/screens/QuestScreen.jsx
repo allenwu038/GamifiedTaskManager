@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
   backgroundContainer: {
     width: null,
     height: 800,
+    paddingLeft: 45
     //justifyContent: 'center',
     //alignItems: 'center', 
   },
   padding: {
-    height: 25
+    height: 25,
+    marginRight: 10
   }
 });
 

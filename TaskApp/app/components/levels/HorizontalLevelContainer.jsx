@@ -25,7 +25,7 @@ export default function HorizontalLevelContainer(levelsPerRow, currentPassed) {
 
     return (
         <View style = {styles.row}>
-            {levels.map( element => element.passed ? <Passed key={element.stage}/> : <Unpassed key={element.stage}/>)}
+            {levels.map( element => element.passed ? Passed(element.stage) : <Unpassed key={element.stage}/>)}
         </View>
     )
 }
