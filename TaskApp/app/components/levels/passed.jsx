@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
     StyleSheet,
     ImageBackground, 
@@ -8,36 +8,34 @@ import {
     Image,
   } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
-import { TouchableHighlight } from 'react-native-gesture-handler';
 import Libmoji from "libmoji";
 
 
-export default function Passed() {
+export default function Passed(stage, navigation) {
     return (
             <Icon
                 name="check-circle"
                 size={35}
                 color='#cc99cc'
                 style = {{padding:10, flex: 1}}
-                onPress = { () => showAlert() }
+                onPress = { () => showAlert(navigation) }
             />
        
     )
 }
 
-function showAlert() {
+function showAlert(navigation) {
     Alert.alert(
         "Level up!",
         "Congrats, you've earned...",
         [
             {
               text: 'unlock new outfit',
-              onPress: () => getBitmoji()
+              onPress: () => navigation.navigate("CharacterScreen")
             }
         ],
         { cancelable: false }
     );
-    
 }
 
 function getBitmoji(){
@@ -50,13 +48,13 @@ function getBitmoji(){
             <Image
             source={{
                 uri: Libmoji.buildPreviewUrl(
-                "body",
-                3,
-                gender[1],
-                style[1],
-                0,
-                traits,
-                outfit
+                    "body",
+                    3,
+                    gender[1],
+                    style[1],
+                    0,
+                    traits,
+                    outfit
                 ),
             }}
             />

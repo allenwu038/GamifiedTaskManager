@@ -11,7 +11,7 @@ import Passed from "./passed.jsx";
 import Unpassed from "./unpassed.jsx";
 
 
-export default function HorizontalLevelContainer(levelsPerRow, currentPassed) {
+export default function HorizontalLevelContainer(levelsPerRow, currentPassed, navigation) {
     let levels = [];
     for (let i = 0; i < levelsPerRow; i++) {
         let temp = i < currentPassed ? true : false;
@@ -25,7 +25,7 @@ export default function HorizontalLevelContainer(levelsPerRow, currentPassed) {
 
     return (
         <View style = {styles.row}>
-            {levels.map( element => element.passed ? Passed(element.stage) : <Unpassed key={element.stage}/>)}
+            {levels.map( element => element.passed ? Passed(element.stage, navigation) : <Unpassed key={element.stage}/>)}
         </View>
     )
 }

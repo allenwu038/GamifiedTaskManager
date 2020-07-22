@@ -45,6 +45,7 @@ export default function App() {
             {/* Character Screen and Setting Screen need to be handled by Stack Nav */}
             <Stack.Screen name="CharacterScreen" component={CharacterScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+            <Stack.Screen name="QuestScreen" component={QuestScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

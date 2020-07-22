@@ -34,11 +34,11 @@ for (let i = 1; i <= maxChapter; i++) {
     );
 } 
 
-export default function QuestScreen() {
+export default function QuestScreen({ navigation }) {
   return (
     <ImageBackground source={levelsBackground} style={styles.backgroundContainer}>
       <ScrollView>
-        {chapters.map( element => LevelList(element.currentStage, element.chapter))}
+        {chapters.map( element => LevelList(element.currentStage, element.chapter, navigation))}
       </ScrollView>
       <View style={styles.padding}>
       </View>
