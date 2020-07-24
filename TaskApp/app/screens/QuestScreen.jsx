@@ -34,11 +34,11 @@ for (let i = 1; i <= maxChapter; i++) {
     );
 } 
 
-export default function QuestScreen({ navigation }) {
+export default function QuestScreen() {
   return (
     <ImageBackground source={levelsBackground} style={styles.backgroundContainer}>
       <ScrollView>
-        {chapters.map( element => LevelList(element.currentStage, element.chapter, navigation))}
+        {chapters.map( element => LevelList(element.currentStage, element.chapter))}
       </ScrollView>
       <View style={styles.padding}>
       </View>
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     //alignItems: 'center', 
   },
   padding: {
-    height: 25,
+    height: 200,
     marginRight: 10
   }
 });

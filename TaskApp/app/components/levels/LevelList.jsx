@@ -19,38 +19,26 @@ let maxLevel = 9;
 let levelsPerRow = 3;
 let numContainers = maxLevel/levelsPerRow;
 
-export default function LevelList(currentLvl, chapter, {navigation}) {
+export default function LevelList(currentLvl, chapter) {
     let currentLevel = currentLvl;
-    let levels = [];
-    for (let i = 0; i < maxLevel; i++) {
-        let temp = i < currentLevel-1 ? true : false;
-        levels.push(
-            {
-                stage: i,
-                passed: temp
-            }
-        );
-    } 
-
-    const Item = ({ title }) => (
-        <View style={styles.item}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-    );
-
     let levelRows = [];
+
     for (let i = 1; i <= numContainers; i++) {
         let levelsPassed = currentLevel - 1 >= levelsPerRow * i ? levelsPerRow
                                     : (currentLevel - 1 < levelsPerRow * (i-1) ? 0 : (currentLevel - 1) % levelsPerRow);
+        let temp = i + numContainers * (chapter - 1);
         levelRows.push(
-            levelsPassed
+            {
+                levelsPassed: levelsPassed,
+                row: temp
+            }
         )
     }
 
     return (
         <View style = {styles.row}>
             <Text>Chapter {chapter}</Text>
-                {levelRows.map( levelsPassedThisRow => HorizontalLevelContainer(levelsPerRow, levelsPassedThisRow, navigation))}
+                {levelRows.map( levelsPassedThisRow => HorizontalLevelContainer(levelsPerRow, levelsPassedThisRow.levelsPassed, levelsPassedThisRow.row))}
         </View>
     );
 }

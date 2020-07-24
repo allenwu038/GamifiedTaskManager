@@ -1,57 +1,99 @@
-import * as React from 'react';
+// export default function Passed(stage) {
+//     return (
+//             <Icon
+//                 name="check-circle"
+//                 size={35}
+//                 color='#cc99cc'
+//                 style = {{padding:10, flex: 1}}
+//                 onPress = { () => openModal()}
+//             />
+       
+//     )
+// }
+
+// function showAlert() {
+//     Alert.alert(
+//         "Level up!",
+//         "Congrats, you've earned...",
+//         [
+//             {
+//               text: 'unlock new outfit',
+//             },
+//             {
+//                 text: 'ok',  
+//             }
+//         ],
+//         { cancelable: false }
+//     );
+// }
+
+import React from 'react';
+import Modal from 'react-native-modal';
 import {
     StyleSheet,
-    ImageBackground, 
-    Button, 
-    View,
-    Alert,
+    Dimensions,
     Image,
+    View,
+    Text
   } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import Libmoji from "libmoji";
 
+export default class Passed extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isModalVisible: false,
+            level: props.level
+        }
+    }
+    render() {
+        return (
+            <View>
+                <Icon
+                    name="check-circle"
+                    size={35}
+                    color='#cc99cc'
+                    style = {{padding:10, flex: 1}}
+                    onPress = {() => this.openModal()}
+                />
+                <Modal 
+                    isVisible={this.state.isModalVisible} 
+                    style={styles.modalWindow}
+                    onBackdropPress={()=>this.closeModal()}
+                    animationOut="slideOutDown"
+                    animationIn="slideInUp"
+                >
+                    <Text style={styles.congrats}>You passed chapter {this.state.level}!</Text>
+                    {this.getBitmoji()}
+                </Modal>
+            </View>
+        );
+    }
 
-export default function Passed(stage, navigation) {
-    return (
-            <Icon
-                name="check-circle"
-                size={35}
-                color='#cc99cc'
-                style = {{padding:10, flex: 1}}
-                onPress = { () => showAlert(navigation) }
-            />
-       
-    )
-}
+    openModal = () => {
+        this.setState({
+            isModalVisible:true
+        });
+    }
 
-function showAlert(navigation) {
-    Alert.alert(
-        "Level up!",
-        "Congrats, you've earned...",
-        [
-            {
-              text: 'unlock new outfit',
-              onPress: () => navigate('CharacterScreen')
-            },
-            {
-                text: 'ok',  
-                onPress: () => navigation.navigate('CharacterScreen')
-            }
-        ],
-        { cancelable: false }
-    );
-}
+    closeModal = () =>{
+        this.setState({
+            isModalVisible:false
+        });
+    }
 
-function getBitmoji(){
-    let gender = Libmoji.genders[Libmoji.randInt(2)];
-    let style = Libmoji.styles[Libmoji.randInt(3)];
-    let traits = Libmoji.randTraits(Libmoji.getTraits(gender[0], style[0]));
-    let outfit = Libmoji.randOutfit(Libmoji.getOutfits(Libmoji.randBrand(Libmoji.getBrands(gender[0]))));
-    return (
-        <View>
-            <Image
-            source={{
-                uri: Libmoji.buildPreviewUrl(
+    getBitmoji = () => {
+        let gender = Libmoji.genders[Libmoji.randInt(2)];
+        let style = Libmoji.styles[Libmoji.randInt(3)];
+        let traits = Libmoji.randTraits(Libmoji.getTraits(gender[0], style[0]));
+        let outfit = Libmoji.randOutfit( Libmoji.getOutfits(Libmoji.randBrand(Libmoji.getBrands(gender[0]))));
+        return (
+            <View>
+                <Image
+                style={styles.preview}
+                source={{
+                    uri: Libmoji.buildPreviewUrl(
                     "body",
                     3,
                     gender[1],
@@ -59,9 +101,27 @@ function getBitmoji(){
                     0,
                     traits,
                     outfit
-                ),
-            }}
-            />
-        </View>
-    );     
+                    ),
+                }}
+                />
+            </View>
+        );
+    }
 }
+
+const styles = StyleSheet.create({
+    preview: {
+      flex: 3,
+      resizeMode: "contain",
+      paddingTop: 25,
+    },
+    congrats: {
+      textAlign: "center",
+      color:'#FFFF00',
+      fontSize: 28
+    },
+    modalWindow: {
+        maxHeight: Dimensions.get('window').height,
+        justifyContent:'center',
+    }
+  });
