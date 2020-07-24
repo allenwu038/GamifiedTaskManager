@@ -96,6 +96,7 @@ yarn add react-native-gesture-handler
 yarn add react-native-screens
 yarn add react-native-tab-view
 yarn add react-native-reanimated
+yarn add react-native-modal
 ```
 
 ### Storage
