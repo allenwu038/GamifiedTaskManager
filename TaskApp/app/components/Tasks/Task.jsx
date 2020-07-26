@@ -12,6 +12,7 @@ import Colors from "../../constants/Colors";
 
 import GetXp from "../../util/GetXp.jsx";
 import SaveXp from "../../util/SaveXp.jsx";
+import clearAsync from "../../util/ClearAsync.jsx";
 
 const Task = ({
   item,
@@ -23,6 +24,8 @@ const Task = ({
   handleEditChange,
   itemChecked,
   itemUnchecked,
+  incrementXp,
+  decrementXp,
   // checkedItems,
 }) => {
   /* const checked = checkedItems.filter(
@@ -38,9 +41,10 @@ const Task = ({
             size={28.5}
             color={Colors.iconColor}
             onPress={() => {
+              //clearAsync();
               item.completed = false;
               itemUnchecked(item.id, item.text, item.completed);
-              SaveXp(GetXp()-1);
+              decrementXp();
             }}
           />
         ) : (
@@ -50,9 +54,10 @@ const Task = ({
             size={28.5}
             color={Colors.iconColor}
             onPress={() => {
+              //clearAsync();
               item.completed = true;
               itemChecked(item.id, item.text, item.completed);  
-              SaveXp( GetXp() + 1 );
+              incrementXp();
             }}
           />
         )}
