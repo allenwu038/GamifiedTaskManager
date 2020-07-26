@@ -9,11 +9,12 @@ import {
   } from 'react-native';
 import backgroundImg from '../assets/images/homescreenBackground.jpg';
 import { SliderBox } from "react-native-image-slider-box";
+import { useNavigation } from "@react-navigation/native";
 //import EnterTextInput from '../util/TextInput.jsx';
 // import ProfileNavButton from '../util/MakeProfileNav.jsx';
 import SaveUserId from '../util/SaveUser.jsx';
-import { useNavigation } from "@react-navigation/native";
 import GetUserId from '../util/GetUser';
+import SaveXp from '../util/SaveXp.jsx';
 
 export default function(props) {
   const navigation = useNavigation();
@@ -78,6 +79,7 @@ class MakeProfile extends React.Component {
               () => {
                 SaveUserId(this.state.value);
                 GetUserId();
+                SaveXp('0');
                 navigation.navigate('TaskScreen');
               }
             }
