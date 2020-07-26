@@ -1,9 +1,10 @@
 import { AsyncStorage } from 'react-native';
 
 const GetXp = async () => {
-    let xp = 0;
+    let xp;
     try {
-        xp = await AsyncStorage.getItem('xp');
+        xp = await AsyncStorage.getItem('@xp');
+        console.log(xp);
     } catch (error) {
         // Error retrieving data
         console.log(error);
