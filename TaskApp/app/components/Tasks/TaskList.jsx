@@ -5,6 +5,9 @@ import { v4 as uuid } from "uuid";
 import Task from "./Task.jsx";
 import AddItem from "./AddItem.jsx";
 
+import GetXp from "../../util/GetXp.jsx";
+import SaveXp from "../../util/SaveXp.jsx";
+
 const TaskList = () => {
   const [items, setItems] = useState([
     {
@@ -83,7 +86,7 @@ const TaskList = () => {
       );
     } else {
       setItems((prevItems) => {
-        return [{ id: uuid(), text, completed }, ...prevItems];
+        return [{ id: uuid(), text, completed: false }, ...prevItems];
       });
     }
   };
@@ -124,6 +127,16 @@ const TaskList = () => {
         });
   };
 
+  const decrementXp = () => {
+    let xp = Number.parseInt(GetXp(), 10) - 1;
+    SaveXp(xp.toString());
+  };
+  
+  const incrementXp = () => {
+    let xp = Number.parseInt(GetXp(), 10) + 1;
+    SaveXp(xp.toString());
+  };
+
   return (
     <View style={styles.container}>
       <AddItem addItem={addItem} />
@@ -141,7 +154,8 @@ const TaskList = () => {
             handleEditChange={handleEditChange}
             itemChecked={itemChecked}
             itemUnchecked={itemUnchecked}
-            // checkedItems={checkedItems}
+            incrementXp={incrementXp}
+            decrementXp={decrementXp}
           />
         )}
       />
