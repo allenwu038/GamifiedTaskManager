@@ -7,7 +7,11 @@ import {
   TouchableOpacity
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+
 import Colors from "../../constants/Colors";
+
+import GetXp from "../../util/GetXp.jsx";
+import SaveXp from "../../util/SaveXp.jsx";
 
 const Task = ({
   item,
@@ -36,6 +40,7 @@ const Task = ({
             onPress={() => {
               item.completed = false;
               itemUnchecked(item.id, item.text, item.completed);
+              SaveXp(GetXp()-1);
             }}
           />
         ) : (
@@ -47,6 +52,7 @@ const Task = ({
             onPress={() => {
               item.completed = true;
               itemChecked(item.id, item.text, item.completed);  
+              SaveXp( GetXp() + 1 );
             }}
           />
         )}
