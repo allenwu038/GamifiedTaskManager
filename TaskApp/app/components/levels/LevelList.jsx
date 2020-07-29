@@ -13,6 +13,7 @@ import Unpassed from "./unpassed.jsx";
 //import ZoomableImage from "react-native-interactive-image";
 //import ImageBrowser from 'react-native-interactive-image-gallery';
 import HorizontalLevelContainer from "./HorizontalLevelContainer.jsx";
+import { v4 as uuid } from "uuid";
 
 
 let maxLevel = 9;
@@ -38,7 +39,11 @@ export default function LevelList(currentLvl, chapter) {
     return (
         <View style = {styles.row}>
             <Text>Chapter {chapter}</Text>
-                {levelRows.map( levelsPassedThisRow => HorizontalLevelContainer(levelsPerRow, levelsPassedThisRow.levelsPassed, levelsPassedThisRow.row))}
+                {levelRows.map( levelsPassedThisRow => 
+                    <View key={uuid()}>
+                        {HorizontalLevelContainer(levelsPerRow, levelsPassedThisRow.levelsPassed, levelsPassedThisRow.row)}
+                    </View>
+                )}
         </View>
     );
 }
