@@ -33,7 +33,7 @@ import {
                     animationOut="slideOutDown"
                     animationIn="slideInUp"
                 >
-                    <Text style={styles.congrats}>You have not passed this chapter yet!</Text>
+                    <Text style={styles.alert}>You have not passed this chapter yet!</Text>
                 </Modal>
             </View>
             
@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
       resizeMode: "contain",
       paddingTop: 25,
     },
-    congrats: {
+    alert: {
       textAlign: "center",
-      color:'#FF0000',
+      color:'white',
       fontSize: 28
     },
     modalWindow: {

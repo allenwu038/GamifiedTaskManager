@@ -82,17 +82,19 @@ export default class Passed extends React.Component {
 
 const styles = StyleSheet.create({
     preview: {
-      flex: 3,
+      //flex: 3,
+      height: 350,
       resizeMode: "contain",
       paddingTop: 25,
     },
     congrats: {
       textAlign: "center",
-      color:'#FFFF00',
+      color:'#cc99cc',
       fontSize: 28
     },
     modalWindow: {
-        maxHeight: Dimensions.get('window').height,
+        marginTop: '30%',
+        maxHeight: Dimensions.get('window').height/2,
         justifyContent:'center',
     }
   });
