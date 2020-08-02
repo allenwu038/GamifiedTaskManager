@@ -1,11 +1,11 @@
 import { AsyncStorage } from 'react-native';
 
-const SaveXp = async (xp) => {
+const SaveXp = async xp => {
     try {
       // console.log("xp type in SaveXp: " + typeof(xp));
-      await AsyncStorage.setItem('@xp', xp);
+      await AsyncStorage.setItem('xp', xp);
       //alert("xp successfully saved:" + Number.parseInt(xp));
-      console.log(xp);
+      console.log("saveXP returns", xp);
     } catch (error) {
       // Error retrieving data
       console.log(error.message);

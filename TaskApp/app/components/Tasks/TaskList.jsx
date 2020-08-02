@@ -127,14 +127,30 @@ const TaskList = () => {
         });
   };
 
+  const num = 300;
+
   const decrementXp = () => {
+    console.log("GetXP Type", typeof (Promise.resolve(GetXp())));
+    console.log("Type of yeehaw??? ", typeof ('yeehaw'));
+    console.log("Does ParseInt work? ", Number(GetXp()));
+    console.log("Does tostring workd??", num.toString(), typeof((GetXp()).toString()));
+    console.log("attempt to decrement", parseInt(GetXp().toString()) -1 );
     let xp = Number.parseInt(GetXp(), 10) - 1;
-    SaveXp(xp.toString());
+    xp.toString();
+    // SaveXp(xp.toString());
+    SaveXp(xp);
   };
   
   const incrementXp = () => {
+    console.log("GetXP Type", typeof (Promise.resolve(GetXp())));
+    console.log("Type of yeehaw??? ", typeof ('yeehaw'));
+    console.log("Does ParseInt work? ", Number(GetXp()));
+    console.log("Does tostring workd??", num.toString(), typeof ((GetXp()).toString()));
+    console.log("Attempt to increment", (GetXp().toString()));
     let xp = Number.parseInt(GetXp(), 10) + 1;
-    SaveXp(xp.toString());
+    // SaveXp(xp.toString());
+    xp.toString();
+    SaveXp(xp); 
   };
 
   return (

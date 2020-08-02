@@ -4,7 +4,7 @@ const GetUserId = async () => {
     let userId = '';
     try {
         userId = await AsyncStorage.getItem('userId');
-        alert("Hello " + userId);
+        console.log(userId);
     } catch (error) {
         // Error retrieving data
         console.log(error);

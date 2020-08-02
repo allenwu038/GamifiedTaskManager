@@ -21,11 +21,15 @@ import QuestScreen from "./app/screens/QuestScreen";
 // ASYNC STORAGE
 import GetUserId from "./app/util/GetUser.jsx";
 import AsyncStorage from "@react-native-community/async-storage";
+import ClearAsync from "./app/util/ClearAsync.jsx";
 
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
   const userId = GetUserId();
+  ClearAsync();
+
+  console.log(userId);
 
   if (!isLoadingComplete) {
     return null;
@@ -39,11 +43,11 @@ export default function App() {
               headerShown: false,
             }}
           >
-            {userId == null && (
-              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            {/* {userId == null && ( */}
+              {(<Stack.Screen name="LoginScreen" component={LoginScreen} />
             )}
-            {userId == null && (
-              <Stack.Screen name="MakeProfile" component={MakeProfile} />
+            {/* {userId == null && ( */}
+              {(<Stack.Screen name="MakeProfile" component={MakeProfile} />
             )}
             <Stack.Screen name="BotNav" component={BottomTabNavigator} />
             {/* Character Screen and Setting Screen need to be handled by Stack Nav */}

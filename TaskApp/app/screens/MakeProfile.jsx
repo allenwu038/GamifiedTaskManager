@@ -15,6 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import SaveUserId from '../util/SaveUser.jsx';
 import GetUserId from '../util/GetUser';
 import SaveXp from '../util/SaveXp.jsx';
+import GetXp from '../util/GetXp';
 
 export default function(props) {
   const navigation = useNavigation();
@@ -80,6 +81,7 @@ class MakeProfile extends React.Component {
                 SaveUserId(this.state.value);
                 GetUserId();
                 SaveXp('0');
+                GetXp();
                 navigation.navigate('BotNav');
               }
             }
