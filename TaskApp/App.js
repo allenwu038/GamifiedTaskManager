@@ -25,7 +25,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 export default function App() {
   const Stack = createStackNavigator();
   const isLoadingComplete = useCachedResources();
-  const userId = "@userId";
+  const userId = GetUserId();
 
   if (!isLoadingComplete) {
     return null;
@@ -39,9 +39,13 @@ export default function App() {
               headerShown: false,
             }}
           >
+            {userId == null && (
+              <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            )}
+            {userId == null && (
+              <Stack.Screen name="MakeProfile" component={MakeProfile} />
+            )}
             <Stack.Screen name="BotNav" component={BottomTabNavigator} />
-            <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="MakeProfile" component={MakeProfile} />
             {/* Character Screen and Setting Screen need to be handled by Stack Nav */}
             <Stack.Screen name="CharacterScreen" component={CharacterScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />

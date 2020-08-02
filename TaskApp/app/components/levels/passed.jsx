@@ -1,32 +1,3 @@
-// export default function Passed(stage) {
-//     return (
-//             <Icon
-//                 name="check-circle"
-//                 size={35}
-//                 color='#cc99cc'
-//                 style = {{padding:10, flex: 1}}
-//                 onPress = { () => openModal()}
-//             />
-       
-//     )
-// }
-
-// function showAlert() {
-//     Alert.alert(
-//         "Level up!",
-//         "Congrats, you've earned...",
-//         [
-//             {
-//               text: 'unlock new outfit',
-//             },
-//             {
-//                 text: 'ok',  
-//             }
-//         ],
-//         { cancelable: false }
-//     );
-// }
-
 import React from 'react';
 import Modal from 'react-native-modal';
 import {
@@ -111,17 +82,19 @@ export default class Passed extends React.Component {
 
 const styles = StyleSheet.create({
     preview: {
-      flex: 3,
+      //flex: 3,
+      height: 350,
       resizeMode: "contain",
       paddingTop: 25,
     },
     congrats: {
       textAlign: "center",
-      color:'#FFFF00',
+      color:'#cc99cc',
       fontSize: 28
     },
     modalWindow: {
-        maxHeight: Dimensions.get('window').height,
+        marginTop: '30%',
+        maxHeight: Dimensions.get('window').height/2,
         justifyContent:'center',
     }
   });

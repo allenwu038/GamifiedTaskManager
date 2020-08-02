@@ -45,7 +45,7 @@ class MakeProfile extends React.Component {
     // const [value, onChangeText] = React.useState('');
     return (
       <ImageBackground source={backgroundImg} style={styles.backgroundContainer}>
-        <Text style={{ fontSize: 16, color: '#000', marginTop: '47%', padding: 0, }}>
+        <Text style={{ fontSize: 16, color: '#000', marginTop: '67%', padding: 0, }}>
           Enter Name Here:
             </Text>
         <TextInput
@@ -80,7 +80,7 @@ class MakeProfile extends React.Component {
                 SaveUserId(this.state.value);
                 GetUserId();
                 SaveXp('0');
-                navigation.navigate('TaskScreen');
+                navigation.navigate('BotNav');
               }
             }
           />
@@ -137,6 +137,6 @@ const styles = StyleSheet.create ({
     bottom: 0,
     backgroundColor: "white",
     paddingVertical: 30, 
-    paddingHorizontal: '24%',
+    paddingHorizontal: '25%',
   }
 });

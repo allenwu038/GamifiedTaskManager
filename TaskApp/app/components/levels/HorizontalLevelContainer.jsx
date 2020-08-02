@@ -26,14 +26,14 @@ export default function HorizontalLevelContainer(levelsPerRow, currentPassed, ro
 
     return (
         <View style = {styles.row}>
-            {levels.map( element => element.passed ? <Passed key={element.stage} level={element.stage}/>: <Unpassed key={element.stage}/>)}
+            {levels.map( element => element.passed ? <Passed key={element.stage} level={element.stage}/> : <Unpassed key={element.stage}/>)}
         </View>
     )
 }
 
 const styles = StyleSheet.create ({
     row: {
-        // flex: 1,
+        //flex: 1,
         flexDirection: "row",
         justifyContent: 'space-around',
     },

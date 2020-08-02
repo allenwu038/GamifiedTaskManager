@@ -15,6 +15,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { MonoText } from "../components/StyledText";
 import LevelList from "../components/levels/LevelList.jsx";
 import levelsBackground from '../assets/images/homescreenBackground.jpg';
+import { v4 as uuid } from "uuid";
 
 let offset = 0;
 let message = "direction";
@@ -38,7 +39,11 @@ export default function QuestScreen() {
   return (
     <ImageBackground source={levelsBackground} style={styles.backgroundContainer}>
       <ScrollView>
-        {chapters.map( element => LevelList(element.currentStage, element.chapter))}
+        {chapters.map( element => 
+          <View key={uuid()}>
+            {LevelList(element.currentStage, element.chapter)}
+          </View>
+        )}
       </ScrollView>
       <View style={styles.padding}>
       </View>
@@ -64,13 +69,13 @@ const styles = StyleSheet.create({
   backgroundContainer: {
     width: null,
     height: 800,
-    paddingLeft: 45
+    paddingLeft: 45,
     //justifyContent: 'center',
     //alignItems: 'center', 
   },
   padding: {
     height: 200,
-    marginRight: 10
+    marginRight: 10,
   }
 });
 
