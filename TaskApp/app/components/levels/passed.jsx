@@ -8,14 +8,29 @@ import {
     Text
   } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
-import images from "./levelImages.jsx";
+//import {images} from "./levelImages.jsx";
+
+let images = [];
+for (let i = 1; i <= 1; i++) {
+    images.push(i.toString());
+}
+
+images = images.map(element => transformImage(element));
+
+function transformImage(element){
+    let url = `../../assets/images/levelImages/chapter${element}` + ".jpg";
+    return (
+        <Image source={require(`../../assets/images/levelImages/chapter${element}.jpg`)} />
+    );
+}
 
 export default class Passed extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             isModalVisible: false,
-            level: props.level
+            level: props.level,
+            images: images
         }
     }
     render() {
@@ -37,6 +52,7 @@ export default class Passed extends React.Component {
                 >
                     <Text style={styles.congrats}>You passed chapter {this.state.level}!</Text>
                     {this.getImage(this.state.level - 1)}
+                    {/* <Image source={require("../../assets/images/levelImages/chapter1.jpg")}/> */}
                 </Modal>
             </View>
         );
@@ -57,7 +73,7 @@ export default class Passed extends React.Component {
     getImage = (index) => {
         return (
             <View>
-                {images[index]}
+                {this.state.images[index]}
             </View>
         );
     }  

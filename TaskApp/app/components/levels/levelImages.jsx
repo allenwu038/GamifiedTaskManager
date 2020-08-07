@@ -13,9 +13,8 @@ images = images.map(element => transformImage(element));
 function transformImage(element){
     let url = "../../assets/images/levelImages/chapter" + element + ".jpg";
     return (
-        <Image source={{uri: url}}/>
+        <Image source={{uri: '../../assets/images/levelImages/chapter' + element + '.jpg'}} />
     );
-    
 }
 
 export default images;
