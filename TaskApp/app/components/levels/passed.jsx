@@ -10,19 +10,9 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 //import {images} from "./levelImages.jsx";
 
-let images = [];
-for (let i = 1; i <= 1; i++) {
-    images.push(i.toString());
-}
-
-images = images.map(element => transformImage(element));
-
-function transformImage(element){
-    let url = `../../assets/images/levelImages/chapter${element}` + ".jpg";
-    return (
-        <Image source={require(`../../assets/images/levelImages/chapter${element}.jpg`)} />
-    );
-}
+let images = [
+    <Image source={require(`../../assets/images/levelImages/chapter1.jpg`)}/>
+];
 
 export default class Passed extends React.Component {
     constructor(props){
@@ -51,8 +41,7 @@ export default class Passed extends React.Component {
                     animationIn="slideInUp"
                 >
                     <Text style={styles.congrats}>You passed chapter {this.state.level}!</Text>
-                    {this.getImage(this.state.level - 1)}
-                    {/* <Image source={require("../../assets/images/levelImages/chapter1.jpg")}/> */}
+                    {images[this.state.level-1]}
                 </Modal>
             </View>
         );
@@ -69,14 +58,6 @@ export default class Passed extends React.Component {
             isModalVisible:false
         });
     }
-
-    getImage = (index) => {
-        return (
-            <View>
-                {this.state.images[index]}
-            </View>
-        );
-    }  
 }
 
 const styles = StyleSheet.create({
