@@ -11,7 +11,7 @@ for (let i = 1; i <= 1; i++) {
 images = images.map(element => transformImage(element));
 
 function transformImage(element){
-    let url = "../../assets/images/levelImages/chapter" + element + ".png";
+    let url = "../../assets/images/levelImages/chapter" + element + ".jpg";
     return (
         <Image source={{uri: url}}/>
     );

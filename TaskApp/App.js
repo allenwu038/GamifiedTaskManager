@@ -41,7 +41,7 @@ export default function App() {
             }}
           >
             {userId == null && <Stack.Screen name="LoginScreen" component={LoginScreen} />}
-            {<Stack.Screen name="MakeProfile" component={MakeProfile} />}
+            {userId == null && <Stack.Screen name="MakeProfile" component={MakeProfile} />}
             <Stack.Screen name="BotNav" component={BottomTabNavigator} />
             {/* Character Screen and Setting Screen need to be handled by Stack Nav */}
             <Stack.Screen name="CharacterScreen" component={CharacterScreen} />
