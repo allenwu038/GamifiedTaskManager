@@ -8,7 +8,7 @@ import {
     Text
   } from 'react-native';
 import Icon from "react-native-vector-icons/FontAwesome";
-import Libmoji from "libmoji";
+import images from "./levelImages.jsx";
 
 export default class Passed extends React.Component {
     constructor(props){
@@ -36,7 +36,7 @@ export default class Passed extends React.Component {
                     animationIn="slideInUp"
                 >
                     <Text style={styles.congrats}>You passed chapter {this.state.level}!</Text>
-                    {this.getBitmoji()}
+                    {this.getImage(this.state.level - 1)}
                 </Modal>
             </View>
         );
@@ -54,30 +54,13 @@ export default class Passed extends React.Component {
         });
     }
 
-    getBitmoji = () => {
-        let gender = Libmoji.genders[Libmoji.randInt(2)];
-        let style = Libmoji.styles[Libmoji.randInt(3)];
-        let traits = Libmoji.randTraits(Libmoji.getTraits(gender[0], style[0]));
-        let outfit = Libmoji.randOutfit( Libmoji.getOutfits(Libmoji.randBrand(Libmoji.getBrands(gender[0]))));
+    getImage = (index) => {
         return (
             <View>
-                <Image
-                style={styles.preview}
-                source={{
-                    uri: Libmoji.buildPreviewUrl(
-                    "body",
-                    3,
-                    gender[1],
-                    style[1],
-                    0,
-                    traits,
-                    outfit
-                    ),
-                }}
-                />
+                {images[index]}
             </View>
         );
-    }
+    }  
 }
 
 const styles = StyleSheet.create({

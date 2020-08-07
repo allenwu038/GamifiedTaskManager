@@ -37,7 +37,7 @@ class MakeProfile extends React.Component {
   render() {
     const { navigation } = this.props;
     let images = [
-      "https://source.unsplash.com/1024x768/?nature",
+      require("../assets/images/levelImages/chapter1.png"),
       "https://source.unsplash.com/1024x768/?water",
       "https://source.unsplash.com/1024x768/?girl", // Network image
     ];
