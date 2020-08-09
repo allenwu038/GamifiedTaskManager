@@ -13,9 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 //import EnterTextInput from '../util/TextInput.jsx';
 // import ProfileNavButton from '../util/MakeProfileNav.jsx';
 import SaveUserId from '../util/SaveUser.jsx';
-import GetUserId from '../util/GetUser';
+import SaveLevel from "../util/SaveLevel.jsx";
 import SaveXp from '../util/SaveXp.jsx';
-import GetXp from '../util/GetXp';
 
 export default function(props) {
   const navigation = useNavigation();
@@ -79,9 +78,8 @@ class MakeProfile extends React.Component {
             onPress={
               () => {
                 SaveUserId(this.state.value);
-                GetUserId();
                 SaveXp('0');
-                GetXp();
+                SaveLevel('1');
                 navigation.navigate('BotNav');
               }
             }

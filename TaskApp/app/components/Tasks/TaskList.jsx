@@ -7,6 +7,8 @@ import AddItem from "./AddItem.jsx";
 
 import GetXp from "../../util/GetXp.jsx";
 import SaveXp from "../../util/SaveXp.jsx";
+import GetLevel from "../../util/GetLevel.jsx"
+import SaveLevel from "../../util/SaveLevel.jsx"
 
 const TaskList = () => {
   const [items, setItems] = useState([
@@ -145,6 +147,21 @@ const TaskList = () => {
     });
   };
 
+  const incrementLevel = () => {
+    var promise = Promise.resolve(GetLevel());
+    var xp = Promise.resolve(GetXp());
+    if (xp === '3') {
+      promise.then(function (value) {
+        SaveLevel((Number.parseInt(value) + 1).toString());
+        SaveXp('0');
+      }, function(reason) {
+        console.log("Promise rejected");
+      });
+    } else {
+      incrementXp();
+    }
+  };
+
   return (
     <View style={styles.container}>
       <AddItem addItem={addItem} />
@@ -164,6 +181,7 @@ const TaskList = () => {
             itemUnchecked={itemUnchecked}
             incrementXp={incrementXp}
             decrementXp={decrementXp}
+            incrementLevel={incrementLevel}
           />
         )}
       />
