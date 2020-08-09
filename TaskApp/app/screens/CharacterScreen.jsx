@@ -1,5 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import * as React from "react";
+import {useState} from "react";
 import {
   Image,
   Platform,
@@ -13,6 +14,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Libmoji from "libmoji";
 
+import ColorPicker from "../components/Characters/ColorPicker.jsx";
+import Colors from "../constants/Colors.js";
+
 import { MonoText } from "../components/StyledText";
 
 export default function CharacterScreen({ navigation }) {
@@ -23,39 +27,47 @@ export default function CharacterScreen({ navigation }) {
     Libmoji.getOutfits(Libmoji.randBrand(Libmoji.getBrands(gender[0])))
   );
 
+  const [characterColor, changeColor] = useState({color: "../assets/images/avatar/whitecircle.png"});
+
+  const handleColorChange = () => {
+    // if (color == "white") {
+    //   changeColor({characterColor: "white"})
+    // } else if (color == "black") {
+    //   changeColor({characterColor: "black"})
+    // } else if (color == "blue") {
+    //   changeColor({characterColor: "blue"})
+    // } else {
+    //   changeColor({characterColor: "white"})
+    // }
+    changeColor({color: "../assets/images/avatar/whitecircle.png"})
+    console.log(characterColor)
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
         <Icon
           name="chevron-double-left"
-          style={styles.iconView}
           size={40}
           color="grey"
           onPress={() => navigation.goBack()}
         />
       </SafeAreaView>
 
+      {console.log(characterColor)}
+      {console.log(typeof(characterColor.color))}
+      var blobSource = characterColor.color
       <View style={styles.preview}>
+        {console.log(characterColor.color)}
         <Image
           style={styles.preview}
-          source={{
-            uri: Libmoji.buildPreviewUrl(
-              "body",
-              3,
-              gender[1],
-              style[1],
-              0,
-              traits,
-              outfit
-            ),
-          }}
+          // Complains abt variables in require
+          source={require(blobSource)}
         />
       </View>
 
-      <ScrollView
-        style={styles.customise}
-        contentContainerStyle={styles.contentContainer}
-      />
+      <ColorPicker onColorChange={handleColorChange}/>
+      
     </View>
   );
 }
@@ -63,14 +75,14 @@ export default function CharacterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: Colors.avatarBackground,
+  },
+  iconView: {
+    //flex: 1,
   },
   preview: {
-    flex: 1,
+    flex: 2,
     resizeMode: "contain",
-    paddingTop: 50,
-  },
-  customise: {
-    flex: 1,
+    alignItems: "center",
   },
 });
