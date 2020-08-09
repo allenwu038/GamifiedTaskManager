@@ -5,7 +5,7 @@ const SaveXp = async xp => {
       // console.log("xp type in SaveXp: " + typeof(xp));
       await AsyncStorage.setItem('xp', xp);
       //alert("xp successfully saved:" + Number.parseInt(xp));
-      console.log("saveXP returns", xp);
+      //console.log("saveXP returns", xp);
     } catch (error) {
       // Error retrieving data
       console.log(error.message);
