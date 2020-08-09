@@ -5,6 +5,9 @@ import { v4 as uuid } from "uuid";
 import Task from "./Task.jsx";
 import AddItem from "./AddItem.jsx";
 
+import GetXp from "../../util/GetXp.jsx";
+import SaveXp from "../../util/SaveXp.jsx";
+
 const TaskList = () => {
   const [items, setItems] = useState([
     {
@@ -83,7 +86,7 @@ const TaskList = () => {
       );
     } else {
       setItems((prevItems) => {
-        return [{ id: uuid(), text, completed }, ...prevItems];
+        return [{ id: uuid(), text, completed: false }, ...prevItems];
       });
     }
   };
@@ -124,6 +127,24 @@ const TaskList = () => {
         });
   };
 
+  const decrementXp = () => {
+    var promise = Promise.resolve(GetXp());
+    promise.then(function (value) {
+      SaveXp((Number.parseInt(value) - 1).toString());
+    }, function(reason) {
+      console.log("Promise rejected");
+    });
+  };
+  
+  const incrementXp = () => {
+    var promise = Promise.resolve(GetXp());
+    promise.then(function (value) {
+      SaveXp((Number.parseInt(value) + 1).toString());
+    }, function(reason) {
+      console.log("Promise rejected");
+    });
+  };
+
   return (
     <View style={styles.container}>
       <AddItem addItem={addItem} />
@@ -141,7 +162,8 @@ const TaskList = () => {
             handleEditChange={handleEditChange}
             itemChecked={itemChecked}
             itemUnchecked={itemUnchecked}
-            // checkedItems={checkedItems}
+            incrementXp={incrementXp}
+            decrementXp={decrementXp}
           />
         )}
       />
