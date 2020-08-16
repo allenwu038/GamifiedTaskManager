@@ -26,6 +26,7 @@ const Task = ({
   itemUnchecked,
   incrementXp,
   decrementXp,
+  incrementLevel,
   // checkedItems,
 }) => {
   /* const checked = checkedItems.filter(
@@ -57,7 +58,7 @@ const Task = ({
               //clearAsync();
               item.completed = true;
               itemChecked(item.id, item.text, item.completed);  
-              incrementXp();
+              incrementLevel();
             }}
           />
         )}
