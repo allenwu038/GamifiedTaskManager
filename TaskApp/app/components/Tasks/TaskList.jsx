@@ -150,16 +150,21 @@ const TaskList = () => {
   const incrementLevel = () => {
     var promise = Promise.resolve(GetLevel());
     var xp = Promise.resolve(GetXp());
-    if (xp === '3') {
-      promise.then(function (value) {
-        SaveLevel((Number.parseInt(value) + 1).toString());
-        SaveXp('0');
-      }, function(reason) {
+    xp.then(function (value) {
+      if (value === '3') {
+        promise.then(function (level) {
+          SaveLevel((Number.parseInt(level) + 1).toString());
+          SaveXp('0');
+          console.log("Incremented Level");
+        }, function (reason) {
+          console.log("Promise rejected");
+        });
+      } else {
+        incrementXp();
+      }
+    }, function(reason) {
         console.log("Promise rejected");
       });
-    } else {
-      incrementXp();
-    }
   };
 
   return (
