@@ -1,6 +1,6 @@
 import * as WebBrowser from "expo-web-browser";
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import {
   Image,
   Platform,
@@ -27,21 +27,21 @@ export default function CharacterScreen({ navigation }) {
     Libmoji.getOutfits(Libmoji.randBrand(Libmoji.getBrands(gender[0])))
   );
 
-  const [characterColor, changeColor] = useState({color: "../assets/images/avatar/whitecircle.png"});
+  const [characterColor, changeColor] = useState({
+    color: "white",
+  });
 
-  const handleColorChange = () => {
-    // if (color == "white") {
-    //   changeColor({characterColor: "white"})
-    // } else if (color == "black") {
-    //   changeColor({characterColor: "black"})
-    // } else if (color == "blue") {
-    //   changeColor({characterColor: "blue"})
-    // } else {
-    //   changeColor({characterColor: "white"})
-    // }
-    changeColor({color: "../assets/images/avatar/whitecircle.png"})
-    console.log(characterColor)
-  }
+  const handleColorChange = (color) => {
+    if (color == "white") {
+      changeColor({ color: "white" });
+    } else if (color == "black") {
+      changeColor({ color: "black" });
+    } else if (color == "blue") {
+      changeColor({ color: "blue" });
+    } else {
+      changeColor({ color: "white" });
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -53,21 +53,18 @@ export default function CharacterScreen({ navigation }) {
           onPress={() => navigation.goBack()}
         />
       </SafeAreaView>
-
-      {console.log(characterColor)}
-      {console.log(typeof(characterColor.color))}
-      var blobSource = characterColor.color
       <View style={styles.preview}>
-        {console.log(characterColor.color)}
         <Image
-          style={styles.preview}
-          // Complains abt variables in require
-          source={require(blobSource)}
+          style={{
+            flex: 2,
+            resizeMode: "contain",
+            alignItems: "center",
+            tintColor: characterColor.color,
+          }}
+          source={require("../assets/images/avatar/whitecircle.png")}
         />
       </View>
-
-      <ColorPicker onColorChange={handleColorChange}/>
-      
+      <ColorPicker onColorChange={handleColorChange} />
     </View>
   );
 }
@@ -77,9 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.avatarBackground,
   },
-  iconView: {
-    //flex: 1,
-  },
+  iconView: {},
   preview: {
     flex: 2,
     resizeMode: "contain",
